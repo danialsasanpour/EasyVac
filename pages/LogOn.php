@@ -5,7 +5,7 @@
 <html lang="en"> 
  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-   <title>Login Page</title>
+   <title>Login</title>
  
    <style>
    header{
