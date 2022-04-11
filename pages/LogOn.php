@@ -5,7 +5,7 @@
 <html lang="en"> 
  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-   <title>Login Page</title>
+   <title>Login</title>
  
    <style>
    header{
@@ -88,35 +88,16 @@
 	float:center;
 	width: 25%;
 	padding:10px;
+	
 	box-sizing:border-box;
 	margin:50px;
+	margin-left:40%;
 	
-	background-image: linear-gradient(black,  #003d4d , white); opacity:0.7;
+	background-image: linear-gradient(black,  #003d4d , white); opacity:0.8;
 	color:white;
 	margin-top:20px;
 }
-.halfleft{
-	float:left;
-	width: 40%;
-	padding:5px;
-	box-sizing:border-box;
-	margin-left:150px;
-	
-	background-image: linear-gradient(white,   #ccffff , white); opacity:0.8;
-	color:black;
-	margin-top:1px;
-}
-#halfright{
-	float:left;
-	width: 30%;
-	padding:5px;
-	box-sizing:border-box;
-	margin:50px;
-	
-	background-image: linear-gradient(white,  #ccffff , white); opacity:0.4;
-	color:white;
-	margin-top:1px;
-}
+
 #footer{	
 	background-color:black; color:white; border-bottom:1px solid #00001acolor:#009999; background-image: linear-gradient(black, black, #003d4d ,black, black,black);
 	text-align:center;padding:20px;}
@@ -149,7 +130,7 @@
 			<br>
 			<div id="aside">
 			<form class="aside" action="home.php" method="post" target="blank">
-				<h1 style="text-align:center; color:white">Welcome to EasyVac</h1><br>
+				<h1 style="text-align:center; color:white">Welcome to EasyVac</h1>
 				<h1 style="color:#009999">Login</h1>
 				<input class="innerbox" type="text" name=""  id="Name" placeholder="User Name" required>
 
@@ -160,7 +141,7 @@
 			
 					
 			
-			<br>
+			
 			
 				
 				<h3>Follow us on:</h3>
