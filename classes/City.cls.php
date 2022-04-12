@@ -64,6 +64,30 @@ class City{
     }
 
     
+    function getCityById($connection){
+        $cityId=$this->getCityId();
+        $sqlStatement="SELECT * FROM cities WHERE cityId=:cityId";
+        $prepare=$connection->prepare("$sqlStatement");
+        $prepare->bindValue(':cityId',$cityId,PDO::PARAM_INT);
+        $prepare->execute();
+        $list=$prepare->fetchAll();
+        $cpt=0;
+        $listOfCities=array();
+        
+        foreach($list as $oneCity){
+            $city=new City(
+                    $oneCity["cityId"],
+                    $oneCity["cityName"],
+                    $oneCity["image"]
+                );
+            $listOfCities[$cpt++]=$city;
+        }
+        return serialize($listOfCities);
+        
+    }
+    
+    
+    
     function getAllCities($connection){
         $cpt=0;
         $sqlStatement="SELECT * FROM cities";

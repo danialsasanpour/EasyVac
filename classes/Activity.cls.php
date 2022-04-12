@@ -181,8 +181,11 @@ class Activity {
     {
         $cityId=$this->getCityId();
         $cpt=0;
-        $sqlStatement="SELECT * FROM activities WHERE cityId=$cityId";
-        $list=$connection->query($sqlStatement);
+        $sqlStatement="SELECT * FROM activities WHERE cityId=:cityId";
+        $prepare=$connection->prepare($sqlStatement);
+        $prepare->bindValue(':cityId',$cityId,PDO::PARAM_INT);
+        $prepare->execute();
+        $list=$prepare->fetchAll();
         $listOfActivities=array();
         
         foreach($list as $oneRow){

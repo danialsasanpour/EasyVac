@@ -211,6 +211,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			         $listOfActivities=unserialize($activity->GetActivitiesByCity($connection));
 			         
 			         $cityName=$oneCity->getCityName();
+			         $cityId=$oneCity->getCityId();
 			         
 			         
 			         echo "<div class='halfleft'>
@@ -220,7 +221,10 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			         
 			         foreach($listOfActivities as $oneActivity){
 			             $activityName=$oneActivity->getActivityName();
-			             echo "<li><a href='./Activities$cityName.php#$cityName".$cpt++."' title='".$oneActivity->getActivityName().
+			             $activityId=$oneActivity->getActivityId();
+			             
+			             echo "<li><a href='./ActivitiesOneCity.php?city=$cityId&activity=$activityId' title='".$oneActivity->getActivityName().
+			             //echo "<li><a href='./Activities$cityName.php#$cityName".$cpt++."' title='".$oneActivity->getActivityName().
 			             "' style='color:#006080'>".$activityName."</a></li>";
 			         }
 			         
