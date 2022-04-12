@@ -2,11 +2,13 @@
 class City{
     private $cityName;
     private $cityId;
+    private $image;
     
     
-    function __construct($cityId=null,$cityName=null){
+    function __construct($cityId=null,$cityName=null,$image=null){
         $this->cityId=$cityId;
         $this->cityName=$cityName;
+        $this->image=$image;
     }
     
     
@@ -43,6 +45,23 @@ class City{
     {
         $this->cityId = $cityId;
     }
+    
+    
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+    
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 
     
     function getAllCities($connection){
@@ -54,7 +73,8 @@ class City{
         foreach($list as $oneRow){
             $city=new City(
                     $oneRow["cityId"],
-                    $oneRow["cityName"]
+                    $oneRow["cityName"],
+                    $oneRow["image"]
                 );
             $listOfCities[$cpt++]=$city;
         }

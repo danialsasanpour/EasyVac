@@ -195,7 +195,42 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<div>
 			
 			<?php 
-			 
+			     require_once '../classes/dbConfig.php';
+			     require_once '../classes/City.cls.php';
+			     require_once '../classes/Activity.cls.php';
+			     
+			     
+			     //Retrieving a list of Activities based on one City
+			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+			     $city=new City();
+			     $listOfCities=unserialize($city->getAllCities($connection));
+			     
+			     foreach($listOfCities as $oneCity){
+			         $activity=new Activity();
+			         $activity->setCityId($oneCity->getCityId());
+			         $listOfActivities=unserialize($activity->GetActivitiesByCity($connection));
+			         
+			         $cityName=$oneCity->getCityName();
+			         
+			         
+			         echo "<div class='halfleft'>
+    					   <h1 style='color:#009999;'>$cityName</h1>
+    					   <ul style='color:#009999;font-size:25px'>";
+			         $cpt=1;
+			         
+			         foreach($listOfActivities as $oneActivity){
+			             $activityName=$oneActivity->getActivityName();
+			             echo "<li><a href='./Activities$cityName.php#$cityName".$cpt++."' title='".$oneActivity->getActivityName().
+			             "' style='color:#006080'>".$activityName."</a></li>";
+			         }
+			         
+			         
+			         echo "	</ul>
+            				</div>
+            				<div id='halfright'>
+            					<img src='".$oneCity->getImage()."' style='height:230px' alt='Wallpaper'/>
+            				</div>";
+			     }
 			
 			
 			?>

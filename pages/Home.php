@@ -216,7 +216,13 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 					<h1 style="color:#009999;">Destinations</h1>
 					<ul style="color:#009999;font-size:25px">
 					
+					
+					
 						<?php 
+						
+						//Displaying the list of Destinations on the Home Page when first loaded
+						
+						
 						  require_once '../classes/dbConfig.php';
 						  require_once '../classes/City.cls.php';
 						  

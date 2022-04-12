@@ -201,7 +201,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<h1 style="text-align:left;margin-left:120px">TORONTO</h1>
 			</div>
 			<div>
-				<div class="halfright" id="t1">
+				<div class="halfright" id="Toronto1">
 					<img src="../img/torontoHelicopter.jpg" style="width:1200px;" alt="torontoWallpaper"/>
 				</div>
 				<div class="halfleft2">
@@ -211,7 +211,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:35 min</h2>
 				</div>
-				<div class="halfright" id="t2">
+				<div class="halfright" id="Toronto2">
 					<img src="../img/torontoGhost.jpg" style="width:1200px" alt="torontoWallpaper"/>
 				</div>
 				<div class="halfleft2">
@@ -221,7 +221,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:2 hr</h2>
 				</div>
-				<div class="halfright" id="t3">
+				<div class="halfright" id="Toronto3">
 					<img src="../img/torontoFerry.jpg" style="width:1200px" alt="Toronto Island Tour by Ferry"/>
 				</div>
 				<div class="halfleft2">
@@ -231,7 +231,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:4 hr</h2>
 				</div>
-				<div class="halfright" id="t4">
+				<div class="halfright" id="Toronto4">
 					<img src="../img/torontoWonderland.jpg" style="width:1200px" alt="torontoWallpaper"/>
 				</div>
 				<div class="halfleft2">
