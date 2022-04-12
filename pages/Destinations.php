@@ -163,7 +163,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<br>
 			
 				 
-			    <input type="button" class="buttonsearch" onclick="location.href='./Form.html'" value="MAKE YOUR PLAN">
+			    <input type="button" class="buttonsearch" onclick="location.href='./Form.php'" value="MAKE YOUR PLAN">
 			   
 				<h3>Follow us on:</h3>
 				<div >

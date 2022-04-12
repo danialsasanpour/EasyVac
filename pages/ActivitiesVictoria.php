@@ -150,11 +150,11 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<div id="nav">
 				<ul>
 						
-						<li><a href="./Home.html" target="Content_Frame">Home </a></li>
-						<li><a href="./Destinations.html" target="Content_Frame">Destinations </a></li>
-						<li><a href="./Activities.html" target="Content_Frame">Activities </a></li>
-						<li><a href="./Form.html" target="Content_Frame">Make Your Plan</a></li>
-						<li><a href="./AboutUs.html" target="Content_Frame">About Us </a></li>
+						<li><a href="./Home.php" target="Content_Frame">Home </a></li>
+						<li><a href="./Destinations.php" target="Content_Frame">Destinations </a></li>
+						<li><a href="./Activities.php" target="Content_Frame">Activities </a></li>
+						<li><a href="./Form.php" target="Content_Frame">Make Your Plan</a></li>
+						<li><a href="./AboutUs.php" target="Content_Frame">About Us </a></li>
 						
 						
 				</ul>
@@ -177,7 +177,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<br>
 			
 				 
-			    <input type="button" class="buttonsearch" onclick="location.href='./Form.html'" value="MAKE YOUR PLAN">
+			    <input type="button" class="buttonsearch" onclick="location.href='./Form.php'" value="MAKE YOUR PLAN">
 			   
 				<h3>Follow us on:</h3>
 				<div >

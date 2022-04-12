@@ -150,11 +150,11 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<div id="nav">
 				<ul>
 						
-						<li><a href="./Home.html" target="Content_Frame">Home </a></li>
-						<li><a href="./Destinations.html" target="Content_Frame">Destinations </a></li>
-						<li><a href="./Activities.html" target="Content_Frame">Activities </a></li>
-						<li><a href="./Form.html" target="Content_Frame">Make Your Plan</a></li>
-						<li><a href="./AboutUs.html" target="Content_Frame">About Us </a></li>
+						<li><a href="./Home.php" target="Content_Frame">Home </a></li>
+						<li><a href="./Destinations.php" target="Content_Frame">Destinations </a></li>
+						<li><a href="./Activities.php" target="Content_Frame">Activities </a></li>
+						<li><a href="./Form.php" target="Content_Frame">Make Your Plan</a></li>
+						<li><a href="./AboutUs.php" target="Content_Frame">About Us </a></li>
 						
 						
 				</ul>
@@ -177,7 +177,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<br>
 			
 				 
-			    <input type="button" class="buttonsearch" onclick="location.href='./Form.html'" value="MAKE YOUR PLAN">
+			    <input type="button" class="buttonsearch" onclick="location.href='./Form.php'" value="MAKE YOUR PLAN">
 			   
 				<h3>Follow us on:</h3>
 				<div >
@@ -230,7 +230,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Night tour (dinner and light show)  &#8594 CAD $139</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Be whisked away for a night at the falls from any downtown Niagara Falls location and head to the Niagara Parks power station to see how the hydropower is generated. See the Niagara Parks epic sound and light show. Watch this immersive, sensory, and family-friendly show featuring 3D projection, interactive opportunities, and a breathtaking musical score. After the show, treat your senses to a delicious 3-course with a view of the falls at Table Rock House Restaurant. Dine on locally sourced and internationally inspired cuisine before heading to the Illumination Tower. View the multi-colored illuminated water of the falls against the night sky. Get creative and control the lights yourself and get an “I Lit Up Niagara Falls” certificate. Finally, your tour guide will drop you off back at your hotel. 
+						Be whisked away for a night at the falls from any downtown Niagara Falls location and head to the Niagara Parks power station to see how the hydropower is generated. See the Niagara Parks epic sound and light show. Watch this immersive, sensory, and family-friendly show featuring 3D projection, interactive opportunities, and a breathtaking musical score. After the show, treat your senses to a delicious 3-course with a view of the falls at Table Rock House Restaurant. Dine on locally sourced and internationally inspired cuisine before heading to the Illumination Tower. View the multi-colored illuminated water of the falls against the night sky. Get creative and control the lights yourself and get an â€œI Lit Up Niagara Fallsâ€� certificate. Finally, your tour guide will drop you off back at your hotel. 
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:4 hr</h2>
 				</div>
