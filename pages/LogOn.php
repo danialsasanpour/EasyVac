@@ -1,7 +1,3 @@
-<?php 
-//testing new directory
-?>
-
 <!DOCTYPE html>     
 <!-- Felipe, Triana
      Description: Project
