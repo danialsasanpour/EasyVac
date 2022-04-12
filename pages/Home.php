@@ -215,13 +215,28 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft">
 					<h1 style="color:#009999;">Destinations</h1>
 					<ul style="color:#009999;font-size:25px">
+					
+						<?php 
+						  require_once '../classes/dbConfig.php';
+						  require_once '../classes/City.cls.php';
+						  
+						  $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+						  
+						  $city=new City();
+						  $listOfCities=unserialize($city->getAllCities($connection));
+						  foreach($listOfCities as $oneCity){
+						      echo "<a href='Destinations.php#".$oneCity->getCityName()."'><li>".$oneCity->getCityName()."</li></a>";
+						  }
+						  
+						?>
+					<!--  
 						<li>Toronto</li>
 						<li>Niagara</li>
 						<li>Montreal</li>
 						<li>Victoria</li>
 						<li>Banff</li>
 					</ul>
-					
+					-->
 					
 				</div>
 				<div id="halfright">
