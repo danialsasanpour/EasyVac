@@ -194,7 +194,6 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			</div>
 			<div>
 				<h1>ACTIVITIES</h1>
-				<br><br><br><br>
 				
 			</div>
 			
@@ -227,7 +226,8 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
     			         <p style='color:#009999;font-size:20px;margin:30px'>
     			         ".$oneActivity->getDescription()."
     			         </p>
-    			         <h2 style='color:#009999;text-align:right;margin-right:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
+    			         <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
+                         <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
     			         </div>";
 			         }
 			         echo "</div><br/><br/><br/><br/><br/><br/>";

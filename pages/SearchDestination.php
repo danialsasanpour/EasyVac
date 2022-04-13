@@ -9,7 +9,7 @@ if(empty($_GET["searchBar"]))
 <html lang="en"> 
  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-   <title>Destinations</title>
+   <title>Searched Destination</title>
  
    <style>
    header{
@@ -206,7 +206,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
                         $cityId=$oneCity->getCityId();
                         
                         echo "<a id='cityId$cityId' ></a>";
-                        echo "<div style='padding-top:15%;padding-bottom:15%;'>";
+                        echo "<div style='padding-bottom:15%;'>";
                         echo "<div class='halfleft'>
     					   <h1 style='color:#009999;'>$cityName</h1>
     					   <ul style='color:#009999;font-size:25px'>";
@@ -230,7 +230,8 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
                     }
                 }
                 else
-                    echo "<h1>City $cityName not found! Please press on any menu options to go back</h1>";
+                    echo "<h1>City $cityName not found! Please press on any menu options to go back</h1><br/><br/>";
+                    echo "<a style='margin-left:15.5%' href='./Destinations.php#backToSearch' style='float:left;'><span style='font-size:18px;color:white;'>Return</span></a>";
             ?>
             
 </div>

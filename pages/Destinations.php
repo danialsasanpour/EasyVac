@@ -184,7 +184,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			
 			
 			
-			<div style=" padding:50px; text-align:center; margin:auto; align-items:center;opactity:0.7">
+			<div style="text-align:center; margin:auto; align-items:center;opactity:0.7">
 			<h1 style="text-align:center; margin:auto; font-weight:bold; margin-bottom:35px;">Search For A Destination</h1>
 			<form action="SearchDestination.php" method="get">
     			<input type="text" name="searchBar" id="searchBar" placeholder="Destination ..." style="padding:9px; width:45%; border:1px solid lightgray;">
@@ -216,7 +216,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			         $cityId=$oneCity->getCityId();
 			         
 			         echo "<a id='cityId$cityId' ></a>";
-			         echo "<div style='padding-top:15%;padding-bottom:15%;'>";
+			         echo "<div style='padding-top:10%;padding-bottom:20%;'>";
                      echo "<div class='halfleft'>
     					   <h1 style='color:#009999;'>".strtoupper($cityName)."</h1>
     					   <ul style='color:#009999;font-size:25px'>";
@@ -232,6 +232,9 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			         
 			         
 			         echo "	</ul>
+                            
+                            <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
+
             				</div>
             				<div id='halfright'>
             					<img src='".$oneCity->getImage()."' style='height:230px' alt='Wallpaper'/>
