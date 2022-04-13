@@ -224,7 +224,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<h1 style="text-align:left;margin-left:120px">
 			<?php 
     			foreach($listOfCities as $oneCity){
-    			    echo $oneCity->getCityName();
+    			    echo strtoupper($oneCity->getCityName());
     			}
 			?>
 			
@@ -233,16 +233,21 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<div>
 			
 			<?php 
-				echo "<div class="halfright" id="Toronto1">
-					<img src="../img/torontoHelicopter.jpg" style="width:1200px;" alt="torontoWallpaper"/>
-				</div>
-				<div class="halfleft2">
-					<h1 style="color:#009999;text-align:left;margin-left:20px">Helicopter Tour Over Toronto &#8594 CAD $119</h1>
-					<p style="color:#009999;font-size:20px;margin:30px">
-						You can see Toronto from eye level on the street. You can climb the famous CN Tower to see it from above. You can even take a boat ride around the waterfront. But nowhere else can you experience a view of Toronto from the sky like this one, on board a helicopter flying high above the largest city in Canada. It’s the perfect idea for a honeymoon, marriage proposal or any special occasion. Begin this Toronto helicopter tour at the Toronto City Center Airport, located downtown, just minutes west of the shoreline from the CN Tower. The Jewel flight is the showcase flight of downtown Toronto. This tour takes place at 2,000 feet (609 meters), covering nine miles (14 km). Marvel at the sights from this height and the distance that can be traveled without battling with the congested streets and traffic lights below. Discover Toronto by flying over the Canadian National Exhibition grounds in the west to the Don Valley Parkway in the east, and from the Lake Shore in the south up to Bloor Street in the north. This flight includes two framed photographs to commemorate the trip. The Interlude flight features the same highlights as the Jewel with some extra niceties. In addition to the two framed photographs, enjoy wine or champagne, desserts, and souvenirs. The flight travels farther west to Humber Bay and High Park, then north to St. Clair Avenue and east to Casa Loma before heading back downtown — covering 14 miles (23 km).
-					</p>
-					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:35 min</h2>
-				</div>";"
+			
+    			foreach($listOfActivities as $oneActivity){
+    			    echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
+					           <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
+        				  </div>
+        				  <div class='halfleft2'>
+        					   <h1 style='color:#009999;text-align:left;margin-left:20px'>".$oneActivity->getActivityName()." &#8594 CAD $".$oneActivity->getPrice()."</h1>
+        					   <p style='color:#009999;font-size:20px;margin:30px'>
+        					   	   ".$oneActivity->getDescription()."
+        					   </p>
+        					   <h2 style='color:#009999;text-align:right;margin-right:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
+        				  </div>";
+    			}
+			
+				
 			?>
 			
 				<!--  
@@ -342,6 +347,8 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 		const d = new Date();
 		document.getElementById("demo").innerHTML = d.toDateString();
 		document.getElementById("demo1").innerHTML = d.toLocaleTimeString();
+		
+		
 	  </script>
 			
  

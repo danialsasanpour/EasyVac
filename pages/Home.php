@@ -193,16 +193,16 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div id="halfright">
 					<h1 style="color:#00141a;font-size: 300%;">$349</h1>
 					<h2 style="color:#00141a;">Skydiving Montreal</h2>
-					<h2 style="color:darkblue;">more information</h2>
+					<h2 style="color:darkblue;"><a href='./Activities.php#activityId132' title='skydiving'>more information</a></h2>
 				</div>
 				<div class="halfleft">
 					<h1 style="color:#009999;">Our top Five</h1>
 					<ul style="color:#009999;font-size:25px">
-						<li>Dog Sled Tour</li>
-						<li>Boat Tour Niagara</li>
-						<li>Skydiving Montreal</li>
-						<li>Whale tour Victoria</li>
-						<li>Wonderland Toronto</li>
+						<li><a href='./Activities.php#activityId151' title='dog sled'>Dog Sled Tour</a></li>
+						<li><a href='./Activities.php#activityId121' title='boat tour'>Boat Tour Niagara</a></li>
+						<li><a href='./Activities.php#activityId132' title='skydiving'>Skydiving Montreal</a></li>
+						<li><a href='./Activities.php#activityId141' title='whale tour'>Whale tour Victoria</a></li>
+						<li><a href='./Activities.php#activityId114' title='wonderland'>Wonderland Toronto</a></li>
 					</ul>
 						
 					
@@ -210,7 +210,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div id="halfright">
 					<h1 style="color:#00141a;font-size: 300%;">$119</h1>
 					<h2 style="color:#00141a;">Helicopter Tour Over Toronto </h2>
-					<h2 style="color:darkblue;">more information</h2>
+					<h2 style="color:darkblue;"><a href='./Activities.php#activityId111' title='helicopter toronto'>more information</a></h2>
 				</div>
 				<div class="halfleft">
 					<h1 style="color:#009999;">Destinations</h1>
@@ -231,10 +231,11 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 						  $city=new City();
 						  $listOfCities=unserialize($city->getAllCities($connection));
 						  foreach($listOfCities as $oneCity){
-						      echo "<a href='Destinations.php#".$oneCity->getCityName()."'><li>".$oneCity->getCityName()."</li></a>";
+						      echo "<a href='Destinations.php#cityId".$oneCity->getCityId()."'><li>".$oneCity->getCityName()."</li></a>";
 						  }
 						  
 						?>
+						</ul>
 					<!--  
 						<li>Toronto</li>
 						<li>Niagara</li>
@@ -248,7 +249,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div id="halfright">
 					<h1 style="color:#00141a;font-size: 300%;">$79</h1>
 					<h2 style="color:#00141a;">Canyon Icewalk  </h2>
-					<h2 style="color:darkblue;">more information</h2>
+					<h2 style="color:darkblue;"><a href='./Activities.php#activityId154' title='icewalk'>more information</a></h2>
 				</div>
 				
 			</div>

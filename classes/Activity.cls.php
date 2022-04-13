@@ -10,12 +10,13 @@ class Activity {
     private $duration;
     private $price;
     private $discount;
+    private $image;
     
     
 
     // Constructor
     function __construct($activityId=null,$cityId=null,$activityName=null,$description=null,
-                         $location=null,$duration=null,$price=null,$discount=null){
+                         $location=null,$duration=null,$price=null,$discount=null,$image=null){
         
         $this->activityId=$activityId;
         $this->cityId=$cityId;
@@ -25,6 +26,7 @@ class Activity {
         $this->duration=$duration;
         $this->price=$price;
         $this->discount=$discount;
+        $this->image=$image;
     }
     
     
@@ -161,20 +163,24 @@ class Activity {
     }
     
     
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+    
+    /**
+     * @param string $activityId
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+    
     
 
-    // Display all activities
-    public function GetAllActivities($connection)
-    {
-        
-    }
-    
-    
-    // After choosing an activity, display that activity's details
-    public function GetActivityById($connection)
-    {
-        
-    }
     
     // After choosing destination, get activities in that destination
     public function GetActivitiesByCity($connection)
@@ -194,6 +200,12 @@ class Activity {
             $activity->setCityId($oneRow["cityId"]);
             $activity->setActivityId($oneRow["activityId"]);
             $activity->setActivityName($oneRow["activityName"]);
+            $activity->setDescription($oneRow["description"]);
+            $activity->setDuration($oneRow["durationMinutes"]);
+            $activity->setLocation($oneRow["location"]);
+            $activity->setPrice($oneRow["price"]);
+            $activity->setDiscount($oneRow["discount"]);
+            $activity->setImage($oneRow["image"]);
             $listOfActivities[$cpt++]=$activity;
             
         }

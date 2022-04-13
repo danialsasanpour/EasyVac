@@ -5,7 +5,7 @@
 <html lang="en"> 
  <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-   <title>Destinations</title>
+   <title>Activities</title>
  
    <style>
    header{
@@ -197,6 +197,49 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<br><br><br><br>
 				
 			</div>
+			
+			<?php 
+			     require_once '../classes/dbConfig.php';
+			     require_once '../classes/City.cls.php';
+			     require_once '../classes/Activity.cls.php';
+			     
+			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+			     
+			     $city=new City();
+			     $listOfCities=unserialize($city->getAllCities($connection));
+			     foreach($listOfCities as $oneCity){
+			         echo "<h1 style='text-align:left;margin-left:120px' class='container'><br><br><br><br><br>".strtoupper($oneCity->getCityName())."<br><br></h1>";
+			         
+			         $activity=new Activity();
+			         $activity->setCityId($oneCity->getCityId());
+			         $listOfActivities=unserialize($activity->GetActivitiesByCity($connection));
+			         
+			         echo "<div>";
+			         
+			         foreach($listOfActivities as $oneActivity){
+			             
+			             echo"
+    			         <div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
+    			         <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
+    			         </div>
+    			         <div class='halfleft2'>
+    			         <h1 style='color:#009999;text-align:left;margin-left:20px'>".$oneActivity->getActivityName()." &#8594 CAD $".$oneActivity->getPrice()."</h1>
+    			         <p style='color:#009999;font-size:20px;margin:30px'>
+    			         ".$oneActivity->getDescription()."
+    			         </p>
+    			         <h2 style='color:#009999;text-align:right;margin-right:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
+    			         </div>";
+			         }
+			         echo "</div><br/><br/><br/><br/><br/><br/>";
+			         
+			     }
+			
+			?>
+			
+			
+			
+			
+			<!--  
 			<div>
 			<h1 style="text-align:left;margin-left:120px">TORONTO</h1>
 			</div>
@@ -207,7 +250,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Helicopter Tour Over Toronto &#8594 CAD $119</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						You can see Toronto from eye level on the street. You can climb the famous CN Tower to see it from above. You can even take a boat ride around the waterfront. But nowhere else can you experience a view of Toronto from the sky like this one, on board a helicopter flying high above the largest city in Canada. It’s the perfect idea for a honeymoon, marriage proposal or any special occasion. Begin this Toronto helicopter tour at the Toronto City Center Airport, located downtown, just minutes west of the shoreline from the CN Tower. The Jewel flight is the showcase flight of downtown Toronto. This tour takes place at 2,000 feet (609 meters), covering nine miles (14 km). Marvel at the sights from this height and the distance that can be traveled without battling with the congested streets and traffic lights below. Discover Toronto by flying over the Canadian National Exhibition grounds in the west to the Don Valley Parkway in the east, and from the Lake Shore in the south up to Bloor Street in the north. This flight includes two framed photographs to commemorate the trip. The Interlude flight features the same highlights as the Jewel with some extra niceties. In addition to the two framed photographs, enjoy wine or champagne, desserts, and souvenirs. The flight travels farther west to Humber Bay and High Park, then north to St. Clair Avenue and east to Casa Loma before heading back downtown — covering 14 miles (23 km).
+						You can see Toronto from eye level on the street. You can climb the famous CN Tower to see it from above. You can even take a boat ride around the waterfront. But nowhere else can you experience a view of Toronto from the sky like this one, on board a helicopter flying high above the largest city in Canada. Itï¿½s the perfect idea for a honeymoon, marriage proposal or any special occasion. Begin this Toronto helicopter tour at the Toronto City Center Airport, located downtown, just minutes west of the shoreline from the CN Tower. The Jewel flight is the showcase flight of downtown Toronto. This tour takes place at 2,000 feet (609 meters), covering nine miles (14 km). Marvel at the sights from this height and the distance that can be traveled without battling with the congested streets and traffic lights below. Discover Toronto by flying over the Canadian National Exhibition grounds in the west to the Don Valley Parkway in the east, and from the Lake Shore in the south up to Bloor Street in the north. This flight includes two framed photographs to commemorate the trip. The Interlude flight features the same highlights as the Jewel with some extra niceties. In addition to the two framed photographs, enjoy wine or champagne, desserts, and souvenirs. The flight travels farther west to Humber Bay and High Park, then north to St. Clair Avenue and east to Casa Loma before heading back downtown ï¿½ covering 14 miles (23 km).
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:35 min</h2>
 				</div>
@@ -217,7 +260,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Ghost Hunted Tour &#8594 CAD $30</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Pass By: Hockey Hall of Fame, Brookfield Place - Concourse Level 30 Yonge Street, Toronto, Ontario M5E 1X8 Canada. Where our tour begins and our first ghost story of the evening.<br>Pass By: Lake Ontario, Ontario L1S 3Z3 Canada. See how far inland Lake Ontario's waters used to reach in the early days of the city.<br>Pass By: St. Lawrence Market, 92-95 Front St. E., Toronto, Ontario M5E 1C4 Canada. The St. Lawrence Market is one of the longest-running markets in North America, popular with both locals and tourists. But when stepping through the doors of the Market, it’s difficult to imagine that the area has seen many darker days over the years.<br>Pass By: St James Anglican Cathedral, 65 Church St (at King St. E.), Toronto, Ontario M5C 2E9 Canada. The cathedral, with construction beginning in 1850 and opening for services on June 19, 1853, was one of the largest buildings in the city at that time. It was designed by Frederick William Cumberland and is a prime example of Gothic Revival architecture....is it haunted?<br>Pass By: Mackenzie House, 82 Bond St, Toronto, Ontario M5B 1X2 Canada. Our final story of the evening features one of Toronto's most well-known haunted buildings.  
+						Pass By: Hockey Hall of Fame, Brookfield Place - Concourse Level 30 Yonge Street, Toronto, Ontario M5E 1X8 Canada. Where our tour begins and our first ghost story of the evening.<br>Pass By: Lake Ontario, Ontario L1S 3Z3 Canada. See how far inland Lake Ontario's waters used to reach in the early days of the city.<br>Pass By: St. Lawrence Market, 92-95 Front St. E., Toronto, Ontario M5E 1C4 Canada. The St. Lawrence Market is one of the longest-running markets in North America, popular with both locals and tourists. But when stepping through the doors of the Market, itï¿½s difficult to imagine that the area has seen many darker days over the years.<br>Pass By: St James Anglican Cathedral, 65 Church St (at King St. E.), Toronto, Ontario M5C 2E9 Canada. The cathedral, with construction beginning in 1850 and opening for services on June 19, 1853, was one of the largest buildings in the city at that time. It was designed by Frederick William Cumberland and is a prime example of Gothic Revival architecture....is it haunted?<br>Pass By: Mackenzie House, 82 Bond St, Toronto, Ontario M5B 1X2 Canada. Our final story of the evening features one of Toronto's most well-known haunted buildings.  
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:2 hr</h2>
 				</div>
@@ -254,7 +297,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Art Galleries And Montreal Biodome &#8594 CAD $50</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Includes transport and enter to Montréal Museum of Fine Arts,   Early to modern international art and the Biodome. Montreal is known for its vibrant arts scene, so these internationally renowned museums at the top of their game are a true feast for the eyes. For a fact, the museum’s a stunning permanent collection of classic and modern visual art is free for everyone under 30, but their temporary exhibitions are also a spectacle to behold. Open this summer, Riopelle: The Call of Northern Landscapes and Indigenous Cultures celebrates the life and work of Quebecois modern artist Jean Paul Riopelle (1923-2002). Featuring never before seen pieces, major works, and restored works, this important collection of intercultural Canadian art is a must-see.
+						Includes transport and enter to Montrï¿½al Museum of Fine Arts,   Early to modern international art and the Biodome. Montreal is known for its vibrant arts scene, so these internationally renowned museums at the top of their game are a true feast for the eyes. For a fact, the museumï¿½s a stunning permanent collection of classic and modern visual art is free for everyone under 30, but their temporary exhibitions are also a spectacle to behold. Open this summer, Riopelle: The Call of Northern Landscapes and Indigenous Cultures celebrates the life and work of Quebecois modern artist Jean Paul Riopelle (1923-2002). Featuring never before seen pieces, major works, and restored works, this important collection of intercultural Canadian art is a must-see.
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:According to schedule</h2>
 				</div>
@@ -264,7 +307,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Skydiving Montreal &#8594 CAD $349</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						For 25 years, skydiving has been our profession and our entire team has more than 175 000 jumps of experience. Remember, you are on the verge of a unique experience that will change your life. You can choose one of 3 different options for your first skydive: Jump at 9000' - This option will allow you to experience a 9000' tandem skydive. At 5000', after only 20 seconds of free fall, your instructor will deploy the parachute and you will be able to enjoy the experience of flying under the canopy. Buy now ! Jump at 13 500' - Our most popular option for a first skydive, that will allow you to get the full experience of free fall for 60 seconds. You will jump from 13 500' attached to your instructor. At 5000', your instructor will deploy the parachute and you will enjoy the flight under your canopy. Jump at 18 000' - The most extreme skydive experience. You will fly up to a height of 18 000’ with the help of oxygen in the plane. You will experience the thrill of the longest freefall: 1 minute and 20 seconds. You are getting ready to enjoy a unique and intense experience that will last around 3 hours and that will definitely mark your life. From the briefing to the landing, here is how the activity will take place. Here is a description of your forthcoming experience.
+						For 25 years, skydiving has been our profession and our entire team has more than 175 000 jumps of experience. Remember, you are on the verge of a unique experience that will change your life. You can choose one of 3 different options for your first skydive: Jump at 9000' - This option will allow you to experience a 9000' tandem skydive. At 5000', after only 20 seconds of free fall, your instructor will deploy the parachute and you will be able to enjoy the experience of flying under the canopy. Buy now ! Jump at 13 500' - Our most popular option for a first skydive, that will allow you to get the full experience of free fall for 60 seconds. You will jump from 13 500' attached to your instructor. At 5000', your instructor will deploy the parachute and you will enjoy the flight under your canopy. Jump at 18 000' - The most extreme skydive experience. You will fly up to a height of 18 000ï¿½ with the help of oxygen in the plane. You will experience the thrill of the longest freefall: 1 minute and 20 seconds. You are getting ready to enjoy a unique and intense experience that will last around 3 hours and that will definitely mark your life. From the briefing to the landing, here is how the activity will take place. Here is a description of your forthcoming experience.
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:3 hr</h2>
 				</div>
@@ -274,7 +317,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Nordic  Spa Thermal Experience  &#8594 CAD $65</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Discover a complete relaxation experience at Strøm Nordic Spa, a peaceful haven located right near downtown Montreal. Enjoy a thermal experience at an exceptional Nordic spa that includes the rental of a bathrobe, a towel, and a locker. Summer or winter, rain or shine, reduce stress as you revive your body and mind.  Begin by relaxing your muscles in the whirlpool hot tubs. Eliminate toxins by going to a heated sauna, followed by a dip in an ice-cold bath and a period of deep relaxation.  Practiced for thousands of years, thermotherapy is a wellness ritual based on the external use of water for therapeutic purposes. Benefit from access to the outdoor whirlpools, thermal and Nordic baths, Finnish saunas, eucalyptus steam bath, thermal and Nordic waterfalls, plus indoor and outdoor relaxation areas with fireplaces.
+						Discover a complete relaxation experience at Strï¿½m Nordic Spa, a peaceful haven located right near downtown Montreal. Enjoy a thermal experience at an exceptional Nordic spa that includes the rental of a bathrobe, a towel, and a locker. Summer or winter, rain or shine, reduce stress as you revive your body and mind.  Begin by relaxing your muscles in the whirlpool hot tubs. Eliminate toxins by going to a heated sauna, followed by a dip in an ice-cold bath and a period of deep relaxation.  Practiced for thousands of years, thermotherapy is a wellness ritual based on the external use of water for therapeutic purposes. Benefit from access to the outdoor whirlpools, thermal and Nordic baths, Finnish saunas, eucalyptus steam bath, thermal and Nordic waterfalls, plus indoor and outdoor relaxation areas with fireplaces.
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:4 hr</h2>
 				</div>
@@ -321,7 +364,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Mountain lakes and waterfalls  &#8594 CAD $119</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Discover soaring mountains, emerald lakes, and breathtaking waterfalls on a full-day tour of the Canadian Rockies. Visit the most spectacular places in Banff and Yoho National Parks to explore the awe-inspiring scenery. Travel through the Canadian Rockies in a comfortable bus, as you learn about the area from your knowledgeable guide. The tour will take you to Lake Louise, Moraine Lake, and Emerald Lake to admire the incredible landscape. Enjoy some free time at each of the lakes to stroll along the shore, or sit by the water and soak it all in. From October to June, when the road to Takakkaw Falls and Moraine Lake is closed due to snow, alternative stops will be made. These might include the Bow Valley Parkway, Johnston Canyon, Marble Canyon, or the Natural Rock Bridge. During the tour you’ll stop for lunch at the historic lodge in Yoho National Park.
+						Discover soaring mountains, emerald lakes, and breathtaking waterfalls on a full-day tour of the Canadian Rockies. Visit the most spectacular places in Banff and Yoho National Parks to explore the awe-inspiring scenery. Travel through the Canadian Rockies in a comfortable bus, as you learn about the area from your knowledgeable guide. The tour will take you to Lake Louise, Moraine Lake, and Emerald Lake to admire the incredible landscape. Enjoy some free time at each of the lakes to stroll along the shore, or sit by the water and soak it all in. From October to June, when the road to Takakkaw Falls and Moraine Lake is closed due to snow, alternative stops will be made. These might include the Bow Valley Parkway, Johnston Canyon, Marble Canyon, or the Natural Rock Bridge. During the tour youï¿½ll stop for lunch at the historic lodge in Yoho National Park.
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:7 hr</h2>
 				</div>
@@ -370,7 +413,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Night tour (dinner and light show)  &#8594 CAD $139</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Be whisked away for a night at the falls from any downtown Niagara Falls location and head to the Niagara Parks power station to see how the hydropower is generated. See the Niagara Parks epic sound and light show. Watch this immersive, sensory, and family-friendly show featuring 3D projection, interactive opportunities, and a breathtaking musical score. After the show, treat your senses to a delicious 3-course with a view of the falls at Table Rock House Restaurant. Dine on locally sourced and internationally inspired cuisine before heading to the Illumination Tower. View the multi-colored illuminated water of the falls against the night sky. Get creative and control the lights yourself and get an “I Lit Up Niagara Falls” certificate. Finally, your tour guide will drop you off back at your hotel.  
+						Be whisked away for a night at the falls from any downtown Niagara Falls location and head to the Niagara Parks power station to see how the hydropower is generated. See the Niagara Parks epic sound and light show. Watch this immersive, sensory, and family-friendly show featuring 3D projection, interactive opportunities, and a breathtaking musical score. After the show, treat your senses to a delicious 3-course with a view of the falls at Table Rock House Restaurant. Dine on locally sourced and internationally inspired cuisine before heading to the Illumination Tower. View the multi-colored illuminated water of the falls against the night sky. Get creative and control the lights yourself and get an ï¿½I Lit Up Niagara Fallsï¿½ certificate. Finally, your tour guide will drop you off back at your hotel.  
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:4 hr</h2>
 				</div>
@@ -427,12 +470,12 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div class="halfleft2">
 					<h1 style="color:#009999;text-align:left;margin-left:20px">Cheakamus Splash &#8594 CAD $129</h1>
 					<p style="color:#009999;font-size:20px;margin:30px">
-						Enjoy a half-day rafting trip that features small splashy rapids, outstanding scenery and lots of laughs. It’s an ideal outdoor activity for families, children, seniors, and anyone looking for a gentle and fun scenic rafting adventure. As you raft down the glacier-fed Cheakamus River between old growth forests, you’ll experience the excitement of gentle rapids and see a variety of birds, wildlife, waterfalls, and the towering peaks of the Coast Mountains. Learn about the intriguing Squamish First Nations history, a key part of the history of the area. There will also be a water fight for the kids. Perfect the art of splashing others and get a chance to cool off with a quick dip in the pure, glacier-fed water. When your river journey ends, you will be taken back to the fully equipped rafting base where you can change back into your own clothes and enjoy the facilities at the resort including a full service restaurant and awesome fully-licensed outdoor patio area. Relax with your family and friends in the beautiful sunshine and comfort of the resort, and check out the photos and videos shot on your trip.
+						Enjoy a half-day rafting trip that features small splashy rapids, outstanding scenery and lots of laughs. Itï¿½s an ideal outdoor activity for families, children, seniors, and anyone looking for a gentle and fun scenic rafting adventure. As you raft down the glacier-fed Cheakamus River between old growth forests, youï¿½ll experience the excitement of gentle rapids and see a variety of birds, wildlife, waterfalls, and the towering peaks of the Coast Mountains. Learn about the intriguing Squamish First Nations history, a key part of the history of the area. There will also be a water fight for the kids. Perfect the art of splashing others and get a chance to cool off with a quick dip in the pure, glacier-fed water. When your river journey ends, you will be taken back to the fully equipped rafting base where you can change back into your own clothes and enjoy the facilities at the resort including a full service restaurant and awesome fully-licensed outdoor patio area. Relax with your family and friends in the beautiful sunshine and comfort of the resort, and check out the photos and videos shot on your trip.
 					</p>
 					<h2 style="color:#009999;text-align:right;margin-right:20px">DURATION:4 hr</h2>
 				</div>
 				<br><br><br><br><br><br>
-			</div>
+			</div>-->
 			<div>
 			<br><br><br><br><br><br>
 			</div>
@@ -467,7 +510,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			<div>
 				<div class="box">
 					
-					<h2 class="footlinks" >2000, Sainte-Catherine Street West</br>Montréal, Québec H3H 2T1</h2>
+					<h2 class="footlinks" >2000, Sainte-Catherine Street West</br>Montrï¿½al, Quï¿½bec H3H 2T1</h2>
 					
 				</div>
 				<div class="box">

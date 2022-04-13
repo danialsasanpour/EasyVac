@@ -1,3 +1,7 @@
+<?php
+if(empty($_GET["searchBar"]))
+    header("Location: Destinations.php#backToSearch");?>
+
 <!DOCTYPE html>     
 <!-- Felipe, Triana
      Description: Project
@@ -113,7 +117,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
    
  </head>
  <body style="background-image: url(../img/a.jpg);  background-repeat: no-repeat; background-size: cover">
-			<br>
+ <br>
 			<header>
 			
 			<div class="container" id="top" style="opacity:0.9">
@@ -142,6 +146,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 						<li><a href="./Activities.php" target="Content_Frame">Activities </a></li>
 						<li><a href="./Form.php" target="Content_Frame">Make Your Plan</a></li>
 						<li><a href="./AboutUs.php" target="Content_Frame">About Us </a></li>
+						
 						
 				</ul>
 			</div>
@@ -178,139 +183,61 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 					</a>
 				</div>
 			</div>
-			<div>
-				<h1 id='backToSearch'>DESTINATIONS</h1>
-			</div>
-			
-			
-			
-			<div style=" padding:50px; text-align:center; margin:auto; align-items:center;opactity:0.7">
-			<h1 style="text-align:center; margin:auto; font-weight:bold; margin-bottom:35px;">Search For A Destination</h1>
-			<form action="SearchDestination.php" method="get">
-    			<input type="text" name="searchBar" id="searchBar" placeholder="Destination ..." style="padding:9px; width:45%; border:1px solid lightgray;">
-    			<input type="submit" id="go" value="Go" style="padding:9px; width:9%; background-color:#009999; color:white; border:1px solid black;">
-			</form>
-			</div>
-			
-			
-			
-			<div>
-			
-			<?php 
-			     require_once '../classes/dbConfig.php';
-			     require_once '../classes/City.cls.php';
-			     require_once '../classes/Activity.cls.php';
-			     
-			     
-			     //Retrieving a list of Activities based on one City
-			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
-			     $city=new City();
-			     $listOfCities=unserialize($city->getAllCities($connection));
-			     
-			     foreach($listOfCities as $oneCity){
-			         $activity=new Activity();
-			         $activity->setCityId($oneCity->getCityId());
-			         $listOfActivities=unserialize($activity->GetActivitiesByCity($connection));
-			         
-			         $cityName=$oneCity->getCityName();
-			         $cityId=$oneCity->getCityId();
-			         
-			         echo "<a id='cityId$cityId' ></a>";
-			         echo "<div style='padding-top:15%;padding-bottom:15%;'>";
-                     echo "<div class='halfleft'>
-    					   <h1 style='color:#009999;'>".strtoupper($cityName)."</h1>
+            <?php
+                require_once '../classes/dbConfig.php';
+                require_once '../classes/City.cls.php';
+                require_once '../classes/Activity.cls.php';
+                
+                $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+                
+                $cityName=$_GET["searchBar"];
+                $city=new City();
+                $city->setCityName($cityName);
+                $listOfCities=unserialize($city->getCityByName($connection));
+                
+                
+                if(sizeof($listOfCities)>0){
+                    foreach($listOfCities as $oneCity){
+                        $activity=new Activity();
+                        $activity->setCityId($oneCity->getCityId());
+                        $listOfActivities=unserialize($activity->GetActivitiesByCity($connection));
+                        
+                        $cityName=$oneCity->getCityName();
+                        $cityId=$oneCity->getCityId();
+                        
+                        echo "<a id='cityId$cityId' ></a>";
+                        echo "<div style='padding-top:15%;padding-bottom:15%;'>";
+                        echo "<div class='halfleft'>
+    					   <h1 style='color:#009999;'>$cityName</h1>
     					   <ul style='color:#009999;font-size:25px'>";
-			         $cpt=1;
-			         
-			         foreach($listOfActivities as $oneActivity){
-			             $activityName=$oneActivity->getActivityName();
-			             $activityId=$oneActivity->getActivityId();
-			             
-			             echo "<li><a href='./ActivitiesOneCity.php?city=$cityId#activityId$activityId' title='".$oneActivity->getActivityName().
-			             "' style='color:#006080'>".$activityName."</a></li>";
-			         }
-			         
-			         
-			         echo "	</ul>
+                        $cpt=1;
+                        
+                        foreach($listOfActivities as $oneActivity){
+                            $activityName=$oneActivity->getActivityName();
+                            $activityId=$oneActivity->getActivityId();
+                            
+                            echo "<li><a href='./ActivitiesOneCity.php?city=$cityId#activityId$activityId' title='".$oneActivity->getActivityName().
+                            "' style='color:#006080'>".$activityName."</a></li>";
+                        }
+                        
+                        
+                        echo "	</ul>
             				</div>
             				<div id='halfright'>
             					<img src='".$oneCity->getImage()."' style='height:230px' alt='Wallpaper'/>
-            				</div></div>";
-			     }
+            				</div></div>"; 
+            		
+                    }
+                }
+                else
+                    echo "<h1>City $cityName not found! Please press on any menu options to go back</h1>";
+            ?>
+            
+</div>
 			
-			
-			?>
-			
-			
-			
-			<!--  
-				<div class="halfleft">
-					<h1 style="color:#009999;">TORONTO</h1>
-					<ul style="color:#009999;font-size:25px">
-						<li><a href="./ActivitiesToronto.html#t1" title="Helicopter Tour Over Toronto" style="color:#006080">Helicopter Tour</a></li>
-						<li><a href="./ActivitiesToronto.html#t2" title="Ghost Hunted Tour" style="color:#006080">Ghost Hunted Tour</a></li>
-						<li><a href="./ActivitiesToronto.html#t3" title="Toronto Island Tour by Ferry" style="color:#006080">Toronto Island Tour by Ferry</a></li>
-						<li><a href="./ActivitiesToronto.html#t4" title="Wonderland Amusement Park" style="color:#006080">Wonderland Amusement Park </a></li>
-						
-					</ul>
-				</div>
-				<div id="halfright">
-					<img src="../img/toronto111.jpg" style="height:230px" alt="torontoWallpaper"/>
-				</div>
-				<div class="halfleft">
-					<h1 style="color:#009999;">MONTREAL</h1>
-					<ul style="color:#009999;font-size:25px">
-						<li><a href="./ActivitiesMontreal.html#m1" title="Art Galleries / Biodome" style="color:#006080">Art Galleries / Biodome</a></li>
-						<li><a href="./ActivitiesMontreal.html#m2" title="Skydiving" style="color:#006080">Skydiving</a></li>
-						<li><a href="./ActivitiesMontreal.html#m3" title="Thermal Nordic Spa" style="color:#006080">Thermal Nordic Spa</a></li>
-						<li><a href="./ActivitiesMontreal.html#m4" title="Parc Omega Montebello Lodge " style="color:#006080">Parc Omega & Montebello Lodge </a></li>
-						
-					</ul>
-				</div>
-				<div id="halfright">
-					<img src="../img/montreal111.jpg" style="height:230px" alt="torontoWallpaper"/>
-				</div>
-				<div class="halfleft">
-					<h1 style="color:#009999;">NIAGARA</h1>
-					<ul style="color:#009999;font-size:25px">
-						<li><a href="./ActivitiesNiagara.html#n2" title="Zipline to the falls" style="color:#006080">Zipline to the falls </a></li>
-						<li><a href="./ActivitiesNiagara.html#n1" title="Boat Tour" style="color:#006080">Boat Tour</a></li>
-						<li><a href="./ActivitiesNiagara.html#n3" title="Night tour-light show " style="color:#006080">Night tour/light show </a></li>
-						<li><a href="./ActivitiesNiagara.html#n4" title="Aero car ride " style="color:#006080">Aero car ride </a></li>
-					</ul>
-				</div>
-				<div id="halfright">
-					<img src="../img/niagara111.jpg" style="height:230px" alt="torontoWallpaper"/>
-				</div>
-				<div class="halfleft">
-					<h1 style="color:#009999;">BANFF</h1>
-					<ul style="color:#009999;font-size:25px">
-						<li><a href="./ActivitiesBanff.html#b1" title="Dog Sled Tour" style="color:#006080">Dog Sled Tourr</a></li>
-						<li><a href="./ActivitiesBanff.html#b2" title="Horse-Drawn Sleigh Ride" style="color:#006080">Horse-Drawn Sleigh Ride</a></li>
-						<li><a href="./ActivitiesBanff.html#b3" title="Mountain lakes and waterfalls " style="color:#006080">Mountain lakes and waterfalls </a></li>
-						<li><a href="./ActivitiesBanff.html#b4" title="Canyon IceWalk" style="color:#006080">Canyon Icewalk</a></li>
-						
-					</ul>
-				</div>
-				<div id="halfright">
-					<img src="../img/banff111.jpg" style="height:230px" alt="torontoWallpaper"/>
-				</div>
-				<div class="halfleft">
-					<h1 style="color:#009999;">VICTORIA BRITISH COLUMBIA</h1>
-					<ul style="color:#009999;font-size:25px">
-						<li><a href="./ActivitiesVictoria.html#v1" title="Whale tour" style="color:#006080">Whale tour</a></li>
-						<li><a href="./ActivitiesVictoria.html#v2" title="Panoramic tour by seaplane " style="color:#006080">Panoramic tour by seaplane </a></li>
-						<li><a href="./ActivitiesVictoria.html#v3" title="Horse Drawn Carriage" style="color:#006080">Horse Drawn Carriage</a></li>
-						<li><a href="./ActivitiesVictoria.html#v4" title="Cheakamus Splash" style="color:#006080">Cheakamus Splash</a></li>
-						
-					</ul>
-				</div>
-				<div id="halfright">
-					<img src="../img/victoria111.jpeg" style="height:230px" alt="victoriaBC"/>
-				</div>
-				
-				-->
-				
+			</div>
+			<div>
+			<br><br><br><br><br><br>
 			</div>
 			
 			<br><br><br><br><br>
@@ -361,6 +288,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 		const d = new Date();
 		document.getElementById("demo").innerHTML = d.toDateString();
 		document.getElementById("demo1").innerHTML = d.toLocaleTimeString();
+		
 		
 	  </script>
 			
