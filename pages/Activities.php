@@ -201,11 +201,13 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			     require_once '../classes/dbConfig.php';
 			     require_once '../classes/City.cls.php';
 			     require_once '../classes/Activity.cls.php';
+			     require_once '../classes/Trip.cls.php';
 			     
 			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
 			     
 			     $city=new City();
 			     $listOfCities=unserialize($city->getAllCities($connection));
+			     
 			     foreach($listOfCities as $oneCity){
 			         echo "<h1 style='text-align:left;margin-left:120px' class='container'><br><br><br><br><br>".strtoupper($oneCity->getCityName())."<br><br></h1>";
 			         
@@ -228,6 +230,8 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
     			         </p>
     			         <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
                          <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
+
+
     			         </div>";
 			         }
 			         echo "</div><br/><br/><br/><br/><br/><br/>";
