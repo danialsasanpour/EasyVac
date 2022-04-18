@@ -203,7 +203,8 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			     require_once '../classes/City.cls.php';
 			     require_once '../classes/dbConfig.php';
 			     require_once '../classes/Activity.cls.php';
-			
+			     require_once '../classes/Trip.cls.php';
+			     
 			     $cityId=$_GET["city"];
 			     
 			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
@@ -234,7 +235,8 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			
 			<?php 
 			
-    			foreach($listOfActivities as $oneActivity){
+    			foreach($listOfActivities as $oneActivity)
+    			{
     			    echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
 					           <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
         				  </div>
@@ -245,11 +247,26 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
         					   </p>
         					   <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
                                <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
+                                
+
+                              <form action='CreatingPlan.php'>
+                               <input type='submit' value='Add To Plan'/>
+
+                              </form>
+                                
+                            // $listOfActivities = { $oneActivity.getName() }
+
         				  </div>";
+    			    
     			}
 			
 				
 			?>
+			
+			<br/><br/><br/>
+			<form action='CreatingPlan.php'>
+                <input type='submit' value='Confirm and Create Plan'/>
+            </form>
 			
 				<!--  
 				<div class="halfright" id="Toronto1">
