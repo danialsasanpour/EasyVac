@@ -200,7 +200,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			     require_once '../classes/dbConfig.php';
 			     require_once '../classes/City.cls.php';
 			     require_once '../classes/Activity.cls.php';
-			     
+			     require_once '../classes/Trip.cls.php';
 			     
 			     //Retrieving a list of Activities based on one City
 			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
@@ -235,6 +235,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
                             
                             <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
 
+                        
             				</div>
             				<div id='halfright'>
             					<img src='".$oneCity->getImage()."' style='height:230px' alt='Wallpaper'/>
