@@ -132,19 +132,18 @@
 			<form class="aside" action="ValidateLogin.php" method="post" target="blank">
 				<h1 style="text-align:center; color:white">Welcome to EasyVac</h1>
 				<h1 style="color:#009999">Login</h1>
-				<input class="innerbox" type="text" name="email"  id="Name" placeholder="User Name" required>
+				<input class="innerbox" type="text" name="email"  id="Name" placeholder="Email" required>
 
-				<input class="innerbox" type="password"  id="Password" name="pwd" placeholder="Password">
+				<input class="innerbox" type="password"  id="Password" name="pwd" placeholder="Password" required>
+				<br/>
+				<?php 
+			         if (isset($_GET['error']))
+			             echo $_GET['error'];
+				?>	
 				<input class="buttonsearch" type="submit" name="submit" value="Sign In" onclick="">
 			</form>
 			
-
-			
-					
-			
-			
-			
-				
+		
 				<h3>Follow us on:</h3>
 				<div >
 					<a href="https://www.facebook.com/" target="blank" >

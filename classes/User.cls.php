@@ -95,7 +95,7 @@ class User {
             $result = $connection->query($query);
             $count = mysqli_num_rows($result);
             if ($count == 0) {
-                error("No Account With The Credentials You Entered Was Found!");
+                //error("No Account With The Credentials You Entered Was Found!");
                 $loginResult = false;
             } elseif ($count == 1) {
                 $loginResult = true;
