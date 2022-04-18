@@ -6,16 +6,92 @@ class User {
     private $username;
     private $email;
     private $password;
+    private $userId;
+    private $paymentId;
+    private $lastName;
+    private $phoneNumber;
     
     
-    function __construct($firstName = null, $username = null, $email = null, $password = null)
+    
+    
+    function __construct($firstName = null, $username = null, $email = null, $password = null,$userId=null, $paymentId=null, $lastName=null,$phoneNumber=null)
     {
         $this->firstName=$firstName;
         $this->username=$username;
         $this->password=$password;
         $this->email=$email;
+        $this->userId=$userId;
+        $this->paymentId=$paymentId;
+        $this->lastName=$lastName;
+        $this->phoneNumber=$phoneNumber;
     }
     
+    
+    
+    
+    /**
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentId()
+    {
+        return $this->paymentId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $userId
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * @param string $paymentId
+     */
+    public function setPaymentId($paymentId)
+    {
+        $this->paymentId = $paymentId;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
     
     /**
      * @return mixed
@@ -81,6 +157,13 @@ class User {
         $this->password = $password;
     }
 
+    
+    
+    
+    
+    
+    
+    
     public static function Login(string $enteredEmail, string $enteredPassword, $connection)
     {
       
