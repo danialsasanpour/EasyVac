@@ -65,11 +65,13 @@
 	height:110px;}		
 .date{font-size:18px}
 
-.buttonsearch{ font-size: 18px; background-color: #009999; display:block;
-   text-align: center; padding: 14px 10px; width:200px;
+.buttonsearch{ 
+    margin:auto;
+    font-size: 18px; background-color: #009999; display:block;
+   text-align: center; padding: 30px 20px; width:300px;
    color: white; border-radius: 24px;
    float:left;	width:16.0%;text-align:center;
-   margin-right: 6px;
+   margin-right: 28px;
    }
    
    
@@ -115,7 +117,7 @@
    </style>
    
  </head>
- <body style="background-image: url(../img/tripc.jpg);  background-repeat: no-repeat; background-size: cover">
+ <body style="background-image: url(../img/tripc.png);  background-repeat: no-repeat; background-size: cover">
 			<br>
 			<header>
 			
@@ -150,16 +152,16 @@
 			
 			   
 			<br>
-			<div id="aside">
+			<div id="aside" style="margin:auto;text-align:center;">
 			
 				<h1 style="text-align:center; color:white">Account Details</h1>
 				
 				<br><br>
 				<input class="buttonsearch"type="button" name="View Profile" value="View Profile" onclick="">
 				<input class="buttonsearch"type="button" name="View my Plans" value="View my Plans" onclick="">
-				<input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick="">
+				<input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""><br/><br/><br/><br/><br/><br/>
 				<input class="buttonsearch"type="button" name="Payment Methods" value="Payment Methods" onclick="">
-				<input class="buttonsearch"type="button" name="Settings" value="Setings" onclick="">
+				<input class="buttonsearch"type="button" name="Settings" value="Settings" onclick="">
 				<input class="buttonsearch"type="button" name="Help" value="Help" onclick="">
 	
 			</div>

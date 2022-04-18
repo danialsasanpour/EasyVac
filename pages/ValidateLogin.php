@@ -5,11 +5,20 @@ require_once '../classes/User.cls.php';
 
 if (isset($_POST['email'])&&isset($_POST['pwd']))
 {
-    $user = new User();
-    $validate = $user->Login($_POST['email'], $_POST['pwd'], $connectionSQL);
+    $userObject = new User();
+    $validate = $userObject->Login($_POST['email'], $_POST['pwd'], $connectionSQL);
     
     if ($validate)
     {
+        session_start();
+        $userObject->setEmail($_POST['email']);
+        $userObject->setPassword($_POST['pwd']);
+        
+        $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+        $userObject=unserialize($userObject->findUser($connection));
+        
+        $_SESSION["user"]=$userObject;
+        
         header("Location: ../pages/Home.php");
     }
     else

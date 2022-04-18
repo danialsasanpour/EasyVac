@@ -120,7 +120,9 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<br><br>
 				<h1> Best price, Best plan...   BEST EXPERIENCE</h1>
 				
-				
+				<?php 
+				    require_once 'header.php';
+				?>
 			</div>
 			
 			</header>

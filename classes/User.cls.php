@@ -192,16 +192,15 @@ class User {
         }
     }
     
-    public static function findUser($connection)
+    function findUser($connection)
     {
         
         $email=$this->getEmail();
         $password=$this->getPassword();
-        $cpt=0;
         $sqlStatement="SELECT * FROM user WHERE email=:email AND userPassword=:password";
         $prepare=$connection->prepare($sqlStatement);
-        $prepare->bindValue(':email',$email,PDO::PARAM_STRING);
-        $prepare->bindValue(':password',$password,PDO::PARAM_STRING);
+        $prepare->bindValue(':email',$email,PDO::PARAM_STR);
+        $prepare->bindValue(':password',$password,PDO::PARAM_STR);
         $prepare->execute();
         $list=$prepare->fetchAll();
         $teacher = "";
@@ -220,6 +219,7 @@ class User {
             }
             
             return serialize($teacher);
+        }
     }
     
 }
