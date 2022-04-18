@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php
+require_once '../classes/dbConfig.php';
+require_once '../classes/User.cls.php';
+require_once '../classes/Trip.cls.php';
+require_once '../classes/City.cls.php';
+session_start();
+
+?>
 
 <!DOCTYPE html>     
 <!-- Felipe, Triana
@@ -69,10 +76,10 @@
 
 .buttonsearch{ 
     margin:auto;
-    font-size: 18px; background-color: #009999; display:block;
-   text-align: center; padding: 30px 20px; width:300px;
+    font-size: 16px; background-color: #009999; display:block;
+   text-align: center; padding: 11px 25px;
    color: white; border-radius: 24px;
-   float:left;	width:16.0%;text-align:center;
+   float:left;	text-align:center;
    margin-right: 28px;
    }
    
@@ -80,7 +87,7 @@
 .buttonsearch:hover {
   background-color: white;
   color: #009999; border-radius: 24px; transition: 0,25s;
-  float:left;	width:16.0%;text-align:center;box-sizing:border-box;}
+  float:left;	text-align:center;box-sizing:border-box;}
   padding:50px;
   
 }
@@ -109,17 +116,27 @@
 	color:white;
 	margin-top:20px;
 }
-
 #footer{	
 	background-color:black; color:white; border-bottom:1px solid #00001acolor:#009999; background-image: linear-gradient(black, black, #003d4d ,black, black,black);
 	text-align:center;padding:20px;}
 
+.bottom-left{
+  position: absolute;
+    top:220px;
+    left:10px;
+  width:45%;
+  color:white;
+}
 
+a..bottom_left:hover {
+  color: darkblue;
+  
+}
 
    </style>
    
  </head>
- <body style="background-image: url(../img/tripc.png);  background-repeat: no-repeat; background-size: cover">
+ <body style="background-image: url(../img/a.jpg);  background-repeat: no-repeat; background-size: cover">
 			<br>
 			<header>
 			
@@ -155,18 +172,54 @@
 			
 			   
 			<br>
-			<div id="aside" style="margin:auto;text-align:center;">
+			<div id="aside" style="margin:auto;text-align:left;font-size:20px;">
 			
-				<h1 style="text-align:center; color:white">Account Details</h1>
+				<?php 
+			     	$userObject=$_SESSION["user"];
+			     	echo "<h1 style='text-align:center; color:white'>".$userObject->getFirstName()."'s plans</h1>";
+				?>
 				
-				<br><br>
-				<a href="AccountInformation.php"><input class="buttonsearch"type="button" name="View Profile" value="View Profile" onclick=""></a>
-				<a href="UserPlans.php"><input class="buttonsearch"type="button" name="View my Plans" value="View my Plans" onclick=""></a>
-				<input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""><br/><br/><br/><br/><br/><br/>
-				<input class="buttonsearch"type="button" name="Payment Methods" value="Payment Methods" onclick="">
-				<input class="buttonsearch"type="button" name="Settings" value="Settings" onclick="">
-				<input class="buttonsearch"type="button" name="Help" value="Help" onclick="">
-	
+				
+				
+				
+				<br/>
+				<div style="margin:auto;text-align:center;">
+				<?php 
+				    $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+				    $trip=new Trip();
+				    $trip->setUserId($userObject->getUserId());
+				
+				    $listOfTrips=unserialize($trip->getTripsByUserId($connection));
+				    
+				    
+				    foreach($listOfTrips as $oneTrip){
+				        $city=new City();
+				        $city->setCityId($oneTrip->getCityId());
+				        
+
+				        
+				        $listOfCities=unserialize($city->getCityById($connection));
+				        foreach($listOfCities as $oneCity){
+				            echo "<div style='position:relative;border-radius: 14px;margin-bottom:60px;margin-left:400px;
+				            color:#009999;padding-left:40px;padding-bottom:60px;width:43%;'>";
+				            
+				            echo "<img style='border-radius:18px;width:80%;' src='".$oneCity->getImage()."' />";
+				            echo "<a class='bottom-left' href='TripActivities.php?tripId=".$oneTrip->getTripId()."'><div ><b>".$oneCity->getCityName()."</b></div></a>";
+				            echo "</div>";
+				        }
+				        
+				    }
+				    
+				    
+				?>
+				</div>
+				<br/>
+				<a href="UserProfile.php"><input class="buttonsearch"type="button" name="View my Plans" value="Go Back" onclick=""></a>
+				
+				
+				</div>
+				
+				
 			</div>
 			
 			

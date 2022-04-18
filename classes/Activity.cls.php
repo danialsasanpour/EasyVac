@@ -213,4 +213,35 @@ class Activity {
         return serialize($listOfActivities);
     }
 
+    
+    function getActivitiesByActivityId($connection){
+        
+        $activityId=$this->getActivityId();
+        $cpt=0;
+        $sqlStatement="SELECT * FROM activities WHERE activityId=:activityId";
+        $prepare=$connection->prepare($sqlStatement);
+        $prepare->bindValue(':activityId',$activityId,PDO::PARAM_INT);
+        $prepare->execute();
+        $list=$prepare->fetchAll();
+        $activity="";
+        
+        foreach($list as $oneRow){
+            $activity=new Activity();
+            
+            $activity->setCityId($oneRow["cityId"]);
+            $activity->setActivityId($oneRow["activityId"]);
+            $activity->setActivityName($oneRow["activityName"]);
+            $activity->setDescription($oneRow["description"]);
+            $activity->setDuration($oneRow["durationMinutes"]);
+            $activity->setLocation($oneRow["location"]);
+            $activity->setPrice($oneRow["price"]);
+            $activity->setDiscount($oneRow["discount"]);
+            $activity->setImage($oneRow["image"]);
+            
+            
+        }
+        
+        return serialize($activity);
+    }
+    
 }

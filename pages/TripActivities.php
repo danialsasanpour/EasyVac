@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php
+require_once '../classes/dbConfig.php';
+require_once '../classes/User.cls.php';
+session_start();
+
+?>
 
 <!DOCTYPE html>     
 <!-- Felipe, Triana
@@ -68,19 +73,20 @@
 .date{font-size:18px}
 
 .buttonsearch{ 
-    margin:auto;
-    font-size: 18px; background-color: #009999; display:block;
-   text-align: center; padding: 30px 20px; width:300px;
+    font-size: 16px; background-color: #009999; display:block;
+   text-align: center; padding: 11px 25px;
    color: white; border-radius: 24px;
-   float:left;	width:16.0%;text-align:center;
+   float:right;	text-align:center;
    margin-right: 28px;
+   margin-left:12%;
+   margin-bottom:50px;
    }
    
    
 .buttonsearch:hover {
   background-color: white;
   color: #009999; border-radius: 24px; transition: 0,25s;
-  float:left;	width:16.0%;text-align:center;box-sizing:border-box;}
+  float:right;	text-align:center;box-sizing:border-box;}
   padding:50px;
   
 }
@@ -116,10 +122,34 @@
 
 
 
+.halfleft{
+	float:left;
+	width: 40%;
+	padding:5px;
+	box-sizing:border-box;
+	margin-left:150px;
+	
+	background-image: linear-gradient(white,   #ccffff , white); opacity:0.8;
+	color:black;
+	margin-top:1px;
+}
+#halfright{
+	float:left;
+	width: 30%;
+	padding:5px;
+	box-sizing:border-box;
+	
+	
+	color:white;
+	margin-top:1px;
+	margin-right:100px;
+}
+
+
    </style>
    
  </head>
- <body style="background-image: url(../img/tripc.png);  background-repeat: no-repeat; background-size: cover">
+ <body style="background-image: url(../img/a.jpg);  background-repeat: no-repeat; background-size: cover">
 			<br>
 			<header>
 			
@@ -155,20 +185,59 @@
 			
 			   
 			<br>
-			<div id="aside" style="margin:auto;text-align:center;">
-			
-				<h1 style="text-align:center; color:white">Account Details</h1>
+			<div id="aside" style="margin:auto;text-align:left;font-size:20px;">
+				<h1 style="text-align:center; color:white">Chosen Activities</h1>
 				
-				<br><br>
-				<a href="AccountInformation.php"><input class="buttonsearch"type="button" name="View Profile" value="View Profile" onclick=""></a>
-				<a href="UserPlans.php"><input class="buttonsearch"type="button" name="View my Plans" value="View my Plans" onclick=""></a>
-				<input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""><br/><br/><br/><br/><br/><br/>
-				<input class="buttonsearch"type="button" name="Payment Methods" value="Payment Methods" onclick="">
-				<input class="buttonsearch"type="button" name="Settings" value="Settings" onclick="">
-				<input class="buttonsearch"type="button" name="Help" value="Help" onclick="">
-	
-			</div>
+				
+				
+				
+				<br>
+				
+				<?php 
+			     require_once '../classes/dbConfig.php';
+			     require_once '../classes/City.cls.php';
+			     require_once '../classes/Activity.cls.php';
+			     require_once '../classes/Trip.cls.php';
+			     
+			     //Retrieving a list of Activities based on one City
+			     $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+			     $tripId=$_GET["tripId"];
+			     $trip=new Trip();
+			     $trip->setTripId($tripId);
+			     $listOfActivities=unserialize($trip->getActivitiesByTripId($connection));
+			     
+			     $cpt=0;
+			     $retrievedActivity=new Activity();
+			     
+			     foreach($listOfActivities as $oneActivity){
+			         $activity=new Activity();
+			         $activity->setActivityId($oneActivity->getActivityId());
+			         $retrievedActivity=unserialize($activity->getActivitiesByActivityId($connection));
+			         
+			         echo "<div style='padding-top:10%;padding-bottom:20%;'>";
+			         echo "<div class='halfleft'>
+    					   <h2 style='color:#009999;'>".$retrievedActivity->getActivityName()."</h2>";
+    				 echo "<h3 style='color:#009999;display:inline;'>Duration: </h3>".$retrievedActivity->getDuration();
+    				 echo "<br/><br/><h3 style='color:#009999;display:inline;'>Price: </h3>".$retrievedActivity->getPrice().
+		                    "<br/><br/><br/></div>
+            				<div id='halfright'>
+            					<img src='".$retrievedActivity->getImage()."' style='max-width:180%;;height:230px' alt='Wallpaper'/>
+            				</div></div>";
+			         
+			         
+			         
+			         
+			     }
 			
+			    
+			?>
+			
+				<br/>
+				
+				</div>
+
+			
+				<a href="UserProfile.php"><input class="buttonsearch"type="button" name="View my Plans" value="Go Back" onclick=""></a>
 			
 			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			
