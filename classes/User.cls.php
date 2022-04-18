@@ -192,6 +192,36 @@ class User {
         }
     }
     
+    public static function findUser($connection)
+    {
+        
+        $email=$this->getEmail();
+        $password=$this->getPassword();
+        $cpt=0;
+        $sqlStatement="SELECT * FROM user WHERE email=:email AND userPassword=:password";
+        $prepare=$connection->prepare($sqlStatement);
+        $prepare->bindValue(':email',$email,PDO::PARAM_STRING);
+        $prepare->bindValue(':password',$password,PDO::PARAM_STRING);
+        $prepare->execute();
+        $list=$prepare->fetchAll();
+        $teacher = "";
+        if (sizeof($list) > 0) {
+            $user = new User();
+            foreach ($list as $oneRow) {
+                $user->setEmail($oneRow["email"]);
+                $user->setFirstName($oneRow["firstName"]);
+                $user->setLastName($oneRow["lastName"]);
+                $user->setPassword($oneRow["userPassword"]);
+                $user->setPhoneNumber($oneRow["phoneNumber"]);
+                $user->setUserId($oneRow["userId"]);
+                $user->setPaymentId($oneRow["paymentId"]);
+                $user->setUsername($oneRow["userName"]);
+                // 2- $listOfTeacher[$cpt++]=$teacher; when you have more than one rows
+            }
+            
+            return serialize($teacher);
+    }
+    
 }
 
 
