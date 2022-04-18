@@ -203,7 +203,7 @@ class User {
         $prepare->bindValue(':password',$password,PDO::PARAM_STR);
         $prepare->execute();
         $list=$prepare->fetchAll();
-        $teacher = "";
+        $user = "";
         if (sizeof($list) > 0) {
             $user = new User();
             foreach ($list as $oneRow) {
@@ -218,7 +218,7 @@ class User {
                 // 2- $listOfTeacher[$cpt++]=$teacher; when you have more than one rows
             }
             
-            return serialize($teacher);
+            return serialize($user);
         }
     }
     

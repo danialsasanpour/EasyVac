@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php 
+require_once '../classes/dbConfig.php';
+require_once '../classes/User.cls.php';
+session_start();
+
+?>
 
 <!DOCTYPE html>     
 <!-- Felipe, Triana
@@ -69,10 +74,10 @@
 
 .buttonsearch{ 
     margin:auto;
-    font-size: 18px; background-color: #009999; display:block;
-   text-align: center; padding: 30px 20px; width:300px;
+    font-size: 16px; background-color: #009999; display:block;
+   text-align: center; padding: 11px 25px;
    color: white; border-radius: 24px;
-   float:left;	width:16.0%;text-align:center;
+   float:left;	text-align:center;
    margin-right: 28px;
    }
    
@@ -80,7 +85,7 @@
 .buttonsearch:hover {
   background-color: white;
   color: #009999; border-radius: 24px; transition: 0,25s;
-  float:left;	width:16.0%;text-align:center;box-sizing:border-box;}
+  float:left;	text-align:center;box-sizing:border-box;}
   padding:50px;
   
 }
@@ -119,7 +124,7 @@
    </style>
    
  </head>
- <body style="background-image: url(../img/tripc.png);  background-repeat: no-repeat; background-size: cover">
+ <body style="background-image: url(../img/a.jpg);  background-repeat: no-repeat; background-size: cover">
 			<br>
 			<header>
 			
@@ -155,18 +160,32 @@
 			
 			   
 			<br>
-			<div id="aside" style="margin:auto;text-align:center;">
+			<div id="aside" style="margin:auto;text-align:left;font-size:20px;">
 			
-				<h1 style="text-align:center; color:white">Account Details</h1>
+				<h1 style="text-align:center; color:white">Personal Details</h1>
+				<p style="text-align:center;">Update your email, name, and phone number any time!</p>
 				
-				<br><br>
-				<a href="AccountInformation.php"><input class="buttonsearch"type="button" name="View Profile" value="View Profile" onclick=""></a>
-				<input class="buttonsearch"type="button" name="View my Plans" value="View my Plans" onclick="">
-				<input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""><br/><br/><br/><br/><br/><br/>
-				<input class="buttonsearch"type="button" name="Payment Methods" value="Payment Methods" onclick="">
-				<input class="buttonsearch"type="button" name="Settings" value="Settings" onclick="">
-				<input class="buttonsearch"type="button" name="Help" value="Help" onclick="">
-	
+				
+				<div style="border-radius: 14px;margin-bottom:60px;margin-left:400px;background-image: linear-gradient(white,   #ccffff , white); opacity:0.8;color:#009999;padding-left:40px;padding-bottom:60px;width:43%;">
+				
+				<br>
+				
+				<?php 
+				    
+// 				    $connection=new PDO("mysql:host=$host;dbname=$dbname",$user,$pass);
+
+				    $userObject=$_SESSION["user"];
+				    echo "<p><b>Name</b></p>".$userObject->getFirstName().", ".$userObject->getLastName()."<br/>";
+				    echo "<br/><p><b>Email</b></p>".$userObject->getEmail()."<br/>";
+				    echo "<br/><p><b>Phone Number</b></p>".$userObject->getPhoneNumber()."<br/>";
+				?>
+				<br/>
+				<a href="UserProfile.php"><input class="buttonsearch"type="button" name="View my Plans" value="Go Back" onclick=""></a>
+				
+				
+				</div>
+				
+				
 			</div>
 			
 			
