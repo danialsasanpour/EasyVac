@@ -1,3 +1,5 @@
+<?php session_start();?>
+
 <!DOCTYPE html>     
 <!-- Felipe, Triana
      Description: Project
@@ -46,7 +48,7 @@
 	text-decoration:none;
 	font-size:25px;
 	
-	padding-right:35px;padding-left:30px;
+	padding-right:30px;padding-left:25px;
 	text-shadow: 1px 1px 2px black, 0px 0 20px black, 0 0 5px darkblue; text-align:center ; 
 	
 }
@@ -155,7 +157,9 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 						<li><a href="./Activities.php" target="Content_Frame">Activities </a></li>
 						<li><a href="./Form.php" target="Content_Frame">Make Your Plan</a></li>
 						<li><a href="./AboutUs.php" target="Content_Frame">About Us </a></li>
-						
+						<?php 
+				             require_once 'header.php';
+			         	?>
 						
 				</ul>
 			</div>
@@ -253,8 +257,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
                                <input type='submit' value='Add To Plan'/>
 
                               </form>
-                                
-                            // $listOfActivities = { $oneActivity.getName() }
+                            
 
         				  </div>";
     			    

@@ -1,19 +1,15 @@
-<div style="height:20px;width:100%;text-align:right;">
-	<?php bar();?>
-</div>
+<?php bar();?>
 
 
 <?php
 function bar(){
-    session_start();
     if(isset($_SESSION["user"])){
         $user=$_SESSION["user"];
-        echo "<a href='UserProfile.php'><img src='../img/user.png' alt='userIcon' /></a>";
+        echo "<li><a target='Content_Frame' href='UserProfile.php'>Account</a></li>";
     }
     else
     {
-        echo "<a href='LogOn.php'><button>Login</button></a>";
-        
+        echo "<li><a target='Content_Frame' href='LogOn.php'>Login</a></li>";
     }
 }
 
