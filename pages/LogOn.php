@@ -129,15 +129,16 @@
 			   
 			<br>
 			<div id="aside">
-			<form class="aside" action="home.php" method="post" target="blank">
+			<form class="aside" action="ValidateLogin.php" method="post" target="blank">
 				<h1 style="text-align:center; color:white">Welcome to EasyVac</h1>
 				<h1 style="color:#009999">Login</h1>
-				<input class="innerbox" type="text" name=""  id="Name" placeholder="User Name" required>
+				<input class="innerbox" type="text" name="email"  id="Name" placeholder="User Name" required>
 
-				<input class="innerbox"type="password"  id="Password" name="" placeholder="Password">
-				<input class="buttonsearch"type="submit" name="" value="Send" onclick="">
+				<input class="innerbox" type="password"  id="Password" name="pwd" placeholder="Password">
+				<input class="buttonsearch" type="submit" name="submit" value="Sign In" onclick="">
 			</form>
 			
+
 			
 					
 			
