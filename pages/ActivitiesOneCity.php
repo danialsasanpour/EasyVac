@@ -258,6 +258,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			
 			<?php 
 			
+			$listOfTempActivityIds=array();
 			    if(!isset($_SESSION['city'])){
         			foreach($listOfActivities as $oneActivity)
         			{
@@ -279,15 +280,14 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
             				  </div>";
         			    
         			}
-			    }
-    			else 
+			    
+    			}
+    			else
     			{
-    			    $listOfTempActivities=array();
     			    
-    			    
-        			foreach($listOfActivities as $oneActivity)
-        			{
-        			    echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
+    			    foreach($listOfActivities as $oneActivity)
+    			    {
+    			        echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
     					           <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
             				  </div>
             				  <div class='halfleft2'>
@@ -296,30 +296,17 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
             					   	   ".$oneActivity->getDescription()."
             					   </p>
             					   <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
-                                   <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>";
-        			    
-        			    if(count($listOfTempActivities)==0){
-        			        echo   "<form action='?city=".$oneActivity->getCityId()."#activity".$oneActivity->getActivityId()."' method='get'><input class='buttonsearch' type='submit' value='Add to plan' onclick=''></form>";
-        			         
-        			    }
-        			    else 
-        			    {
-        			        
-        			        foreach($listOfTempActivities as $oneTempActivity){
-        			            echo "seen";
-        			            if($oneTempActivity->getActivityId()==$oneActivity->getActivityId()){
-        			                
-        			            }
-        			            else
-        			            {
-        			                echo "  <input class='buttonsearch' type='button' name='View my Plans' value='Add to plan' onclick=''>";
-        			            }
-        			      }
-        			    
-        			    }
-                           echo "</div>";
-        			    
-        			}
+                                   <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
+    
+                                    <form action='#activityId".$oneActivity->getActivityId()."' method='post'>
+                                        <input class='buttonsearch' type='button' value='Add to Plan' onclick=''>
+                                        <input name='hiddenId' type='hidden' value='".$oneActivity->getActivityId()."'/>
+                
+                                    </form>";
+                            echo "</div>";
+    			    }
+    			    
+    			    
     			}
     			
 			
@@ -327,7 +314,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			?>
 			
 			<br/><br/><br/>
-			 <input class='buttonsearch' type='button' name='View my Plans' value='Confirm and Create Plan' onclick=''>
+			 <input style="margin-bottom:50px;margin-top:50px;" class='buttonsearch' type='button' name='View my Plans' value='Confirm and Create Plan' onclick=''>
 			
 				<!--  
 				<div class="halfright" id="Toronto1">
