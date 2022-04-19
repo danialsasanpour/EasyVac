@@ -230,8 +230,20 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			             $activityName=$oneActivity->getActivityName();
 			             $activityId=$oneActivity->getActivityId();
 			             
-			             echo "<li><a href='./ActivitiesOneCity.php?city=$cityId#activityId$activityId' title='".$oneActivity->getActivityName().
-			             "' style='color:#006080'>".$activityName."</a></li>";
+			             
+			             if(!isset($_SESSION['trip']))
+			             {
+    			             echo "<li><a href='./ActivitiesOneCity.php?city=$cityId#activityId$activityId' title='".$oneActivity->getActivityName().
+    			             "' style='color:#006080'>".$activityName."</a></li>";
+			             }
+			             else
+			             {
+			                 $_SESSION['city']=$cityId;
+			                 
+			                 
+			                 echo "<li><a href='./ActivitiesOneCity.php?city=$cityId#activityId$activityId' title='".$oneActivity->getActivityName().
+			                 "' style='color:#006080' onclick='myFunction()'>".$oneActivity->getActivityName()."</a></li>";
+			             }
 			         }
 			         
 			         
@@ -319,6 +331,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				
 				-->
 				
+				
 			</div>
 			
 			<br><br><br><br><br>
@@ -369,6 +382,16 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 		const d = new Date();
 		document.getElementById("demo").innerHTML = d.toDateString();
 		document.getElementById("demo1").innerHTML = d.toLocaleTimeString();
+		
+		function myFunction() {
+              let text = "Adding this city to the plan?";
+              if (confirm(text) == true) {
+                
+                
+              } else {
+                
+              }
+            }
 		
 	  </script>
 			

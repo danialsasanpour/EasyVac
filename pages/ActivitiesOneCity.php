@@ -124,6 +124,25 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 	background-color:black; color:white; border-bottom:1px solid #00001a; background-image: linear-gradient(black, black, #003d4d ,black, black,black);
 	text-align:center;padding:20px;}
 
+.buttonsearch{ 
+    margin:auto;
+    font-size: 16px; background-color: #009999; display:block;
+   text-align: center; padding: 11px 25px;
+   color: white; border-radius: 24px;
+   float:left;	text-align:center;
+   margin-right: 28px;
+   }
+   
+   
+.buttonsearch:hover {
+  background-color: white;
+  color: #009999; border-radius: 24px; transition: 0,25s;
+  float:left;	text-align:center;box-sizing:border-box;}
+  padding:50px;
+  
+}
+
+
    </style>
    
  </head>
@@ -239,37 +258,76 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			
 			<?php 
 			
-    			foreach($listOfActivities as $oneActivity)
-    			{
-    			    echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
-					           <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
-        				  </div>
-        				  <div class='halfleft2'>
-        					   <h1 style='color:#009999;text-align:left;margin-left:20px'>".$oneActivity->getActivityName()." &#8594 CAD $".$oneActivity->getPrice()."</h1>
-        					   <p style='color:#009999;font-size:20px;margin:30px'>
-        					   	   ".$oneActivity->getDescription()."
-        					   </p>
-        					   <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
-                               <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
+			    if(!isset($_SESSION['city'])){
+        			foreach($listOfActivities as $oneActivity)
+        			{
+        			    echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
+    					           <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
+            				  </div>
+            				  <div class='halfleft2'>
+            					   <h1 style='color:#009999;text-align:left;margin-left:20px'>".$oneActivity->getActivityName()." &#8594 CAD $".$oneActivity->getPrice()."</h1>
+            					   <p style='color:#009999;font-size:20px;margin:30px'>
+            					   	   ".$oneActivity->getDescription()."
+            					   </p>
+            					   <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
+                                   <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>
+                                    
+    
+                                 
                                 
-
-                              <form action='CreatingPlan.php'>
-                               <input type='submit' value='Add To Plan'/>
-
-                              </form>
-                            
-
-        				  </div>";
+    
+            				  </div>";
+        			    
+        			}
+			    }
+    			else 
+    			{
+    			    $listOfTempActivities=array();
     			    
+    			    
+        			foreach($listOfActivities as $oneActivity)
+        			{
+        			    echo "<div class='halfright' id='activityId".$oneActivity->getActivityId()."'>
+    					           <img src='".$oneActivity->getImage()."' style='width:1200px;' alt='Wallpaper'/>
+            				  </div>
+            				  <div class='halfleft2'>
+            					   <h1 style='color:#009999;text-align:left;margin-left:20px'>".$oneActivity->getActivityName()." &#8594 CAD $".$oneActivity->getPrice()."</h1>
+            					   <p style='color:#009999;font-size:20px;margin:30px'>
+            					   	   ".$oneActivity->getDescription()."
+            					   </p>
+            					   <h2 style='color:#009999;text-align:left;margin-left:20px'>DURATION:".$oneActivity->getDuration()." min</h2>
+                                   <a href='#nav' style='float:right;'><span style='font-size:18px;color:#006080;'>Go back to top</span></a>";
+        			    
+        			    if(count($listOfTempActivities)==0){
+        			        echo   "<form action='?city=".$oneActivity->getCityId()."#activity".$oneActivity->getActivityId()."' method='get'><input class='buttonsearch' type='submit' value='Add to plan' onclick=''></form>";
+        			         
+        			    }
+        			    else 
+        			    {
+        			        
+        			        foreach($listOfTempActivities as $oneTempActivity){
+        			            echo "seen";
+        			            if($oneTempActivity->getActivityId()==$oneActivity->getActivityId()){
+        			                
+        			            }
+        			            else
+        			            {
+        			                echo "  <input class='buttonsearch' type='button' name='View my Plans' value='Add to plan' onclick=''>";
+        			            }
+        			      }
+        			    
+        			    }
+                           echo "</div>";
+        			    
+        			}
     			}
+    			
 			
 				
 			?>
 			
 			<br/><br/><br/>
-			<form action='CreatingPlan.php'>
-                <input type='submit' value='Confirm and Create Plan'/>
-            </form>
+			 <input class='buttonsearch' type='button' name='View my Plans' value='Confirm and Create Plan' onclick=''>
 			
 				<!--  
 				<div class="halfright" id="Toronto1">

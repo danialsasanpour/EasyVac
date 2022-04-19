@@ -8,6 +8,8 @@ class Trip {
     private $cityId;
     private $activityId;
     
+    public static $counter=2022005;
+    
     function __construct($tripId = null, $user = null, $city = null, $activityId=null)
     {
         $this->tripId=$tripId;

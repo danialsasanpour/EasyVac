@@ -162,7 +162,7 @@
 				<br><br>
 				<a href="AccountInformation.php"><input class="buttonsearch"type="button" name="View Profile" value="View Profile" onclick=""></a>
 				<a href="UserPlans.php"><input class="buttonsearch"type="button" name="View my Plans" value="View my Plans" onclick=""></a>
-				<input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""><br/><br/><br/><br/><br/><br/>
+				<a href="MakeNewPlanProcess.php"><input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""></a><br/><br/><br/><br/><br/><br/>
 				<input class="buttonsearch"type="button" name="Payment Methods" value="Payment Methods" onclick="">
 				<input class="buttonsearch"type="button" name="Settings" value="Settings" onclick="">
 				<input class="buttonsearch"type="button" name="Help" value="Help" onclick="">
