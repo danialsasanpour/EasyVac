@@ -122,7 +122,7 @@ session_start();
 
 .bottom-left{
   position: absolute;
-    top:220px;
+    top:200px;
     left:10px;
   width:45%;
   color:white;

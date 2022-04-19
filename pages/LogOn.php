@@ -135,7 +135,7 @@ session_destroy();
 			   
 			<br>
 			<div id="aside">
-			<form class="aside" action="ValidateLogin.php" method="post" target="blank">
+			<form class="aside" action="ValidateLogin.php" method="post" >
 				<h1 style="text-align:center; color:white">Welcome to EasyVac</h1>
 				<h1 style="color:#009999">Login</h1>
 				<input class="innerbox" type="text" name="email"  id="Name" placeholder="Email" required>

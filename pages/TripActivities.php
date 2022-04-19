@@ -125,7 +125,7 @@ session_start();
 .halfleft{
 	float:left;
 	width: 40%;
-	padding:5px;
+	padding:15px;
 	box-sizing:border-box;
 	margin-left:150px;
 	
@@ -217,15 +217,12 @@ session_start();
 			         echo "<div style='padding-top:10%;padding-bottom:20%;'>";
 			         echo "<div class='halfleft'>
     					   <h2 style='color:#009999;'>".$retrievedActivity->getActivityName()."</h2>";
-    				 echo "<h3 style='color:#009999;display:inline;'>Duration: </h3>".$retrievedActivity->getDuration();
-    				 echo "<br/><br/><h3 style='color:#009999;display:inline;'>Price: </h3>".$retrievedActivity->getPrice().
-		                    "<br/><br/><br/></div>
+    				 echo "<h3 style='color:#009999;display:inline;'>Duration: ".$retrievedActivity->getDuration()." minutes</h3>";
+    				 echo "<br/><br/><h3 style='color:#009999;display:inline;'>Price: $".$retrievedActivity->getPrice().
+		                    "</h3><br/><br/><br/></div>
             				<div id='halfright'>
             					<img src='".$retrievedActivity->getImage()."' style='max-width:180%;;height:230px' alt='Wallpaper'/>
             				</div></div>";
-			         
-			         
-			         
 			         
 			     }
 			
