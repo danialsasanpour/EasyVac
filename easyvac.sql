@@ -22,7 +22,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+create database easyvac;
+use easyvac;
 --
 -- Table structure for table `activities`
 --
