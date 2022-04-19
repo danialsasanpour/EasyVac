@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2022 at 06:14 PM
+-- Generation Time: Apr 19, 2022 at 03:30 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -26,10 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `activities`
 --
-
-create database easyvac;
-use easyvac;
-
 
 CREATE TABLE `activities` (
   `activityId` int(3) NOT NULL,
@@ -186,21 +182,50 @@ INSERT INTO `paypal` (`paymentId`, `userNameOrEmail`, `password`) VALUES
 
 CREATE TABLE `trip` (
   `tripId` int(11) NOT NULL,
-  `cityId` int(11) NOT NULL,
-  `numberOfPeople` int(11) NOT NULL,
-  `numberOfActivities` int(11) NOT NULL
+  `cityId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `trip`
 --
 
-INSERT INTO `trip` (`tripId`, `cityId`, `numberOfPeople`, `numberOfActivities`) VALUES
-(20220001, 101, 1, 3),
-(20220002, 102, 2, 4),
-(20220003, 103, 1, 2),
-(20220004, 104, 2, 3),
-(20220005, 105, 4, 2);
+INSERT INTO `trip` (`tripId`, `cityId`) VALUES
+(20220001, 101),
+(20220002, 102),
+(20220003, 103),
+(20220004, 104),
+(20220005, 105);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trip_activities`
+--
+
+CREATE TABLE `trip_activities` (
+  `tripId` int(11) NOT NULL,
+  `activityId` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `trip_activities`
+--
+
+INSERT INTO `trip_activities` (`tripId`, `activityId`) VALUES
+(20220001, 111),
+(20220001, 114),
+(20220002, 122),
+(20220002, 123),
+(20220002, 124),
+(20220003, 133),
+(20220003, 132),
+(20220003, 131),
+(20220003, 134),
+(20220004, 142),
+(20220004, 144),
+(20220005, 152),
+(20220005, 151),
+(20220005, 154);
 
 -- --------------------------------------------------------
 
@@ -211,7 +236,6 @@ INSERT INTO `trip` (`tripId`, `cityId`, `numberOfPeople`, `numberOfActivities`) 
 CREATE TABLE `user` (
   `userId` int(3) NOT NULL,
   `paymentId` int(11) NOT NULL,
-  `tripId` int(11) NOT NULL,
   `userName` varchar(30) NOT NULL,
   `firstName` varchar(30) NOT NULL,
   `lastName` varchar(30) NOT NULL,
@@ -224,11 +248,33 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `paymentId`, `tripId`, `userName`, `firstName`, `lastName`, `email`, `userPassword`, `phoneNumber`) VALUES
-(1, 1, 20220001, 'felipe001', 'Felipe', 'Triana', 'felipe.triana@gmail.com', 'felipetrip7777', '(438)555 1111'),
-(2, 2, 20220003, 'abu002', 'Abu', 'Sharoukh', 'abu.sharoukh@gmail.com', 'abutrip888', '(438)555 2222'),
-(3, 2, 20220005, 'danial003', 'danial', 'sasanpour', 'danial.sasanpour@gmail.com', 'danialtrip999', '(438)555 3333'),
-(4, 1, 20220002, 'an004', 'An', 'Thanh', 'An.Thanh@gmail.com', 'antrip0000', '(438)555 4444');
+INSERT INTO `user` (`userId`, `paymentId`, `userName`, `firstName`, `lastName`, `email`, `userPassword`, `phoneNumber`) VALUES
+(1, 1, 'felipe001', 'Felipe', 'Triana', 'felipe.triana@gmail.com', 'felipetrip7777', '(438)555 1111'),
+(2, 2, 'abu002', 'Abu', 'Sharoukh', 'abu.sharoukh@gmail.com', 'abutrip888', '(438)555 2222'),
+(3, 2, 'danial003', 'danial', 'sasanpour', 'danial.sasanpour@gmail.com', 'danialtrip999', '(438)555 3333'),
+(4, 1, 'an004', 'An', 'Thanh', 'An.Thanh@gmail.com', 'antrip0000', '(438)555 4444');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_trips`
+--
+
+CREATE TABLE `user_trips` (
+  `userId` int(3) NOT NULL,
+  `tripId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_trips`
+--
+
+INSERT INTO `user_trips` (`userId`, `tripId`) VALUES
+(1, 20220001),
+(2, 20220004),
+(1, 20220005),
+(3, 20220002),
+(3, 20220003);
 
 --
 -- Indexes for dumped tables
@@ -281,12 +327,25 @@ ALTER TABLE `trip`
   ADD KEY `cityId` (`cityId`);
 
 --
+-- Indexes for table `trip_activities`
+--
+ALTER TABLE `trip_activities`
+  ADD KEY `activityId` (`activityId`),
+  ADD KEY `tripId` (`tripId`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`),
-  ADD KEY `paymentId` (`paymentId`),
-  ADD KEY `tripId` (`tripId`);
+  ADD KEY `paymentId` (`paymentId`);
+
+--
+-- Indexes for table `user_trips`
+--
+ALTER TABLE `user_trips`
+  ADD KEY `tripId` (`tripId`),
+  ADD KEY `userId` (`userId`);
 
 --
 -- Constraints for dumped tables
@@ -317,11 +376,24 @@ ALTER TABLE `trip`
   ADD CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`cityId`) REFERENCES `cities` (`cityId`);
 
 --
+-- Constraints for table `trip_activities`
+--
+ALTER TABLE `trip_activities`
+  ADD CONSTRAINT `trip_activities_ibfk_1` FOREIGN KEY (`activityId`) REFERENCES `activities` (`activityId`),
+  ADD CONSTRAINT `trip_activities_ibfk_2` FOREIGN KEY (`tripId`) REFERENCES `trip` (`tripId`);
+
+--
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`paymentId`) REFERENCES `payment` (`paymentId`),
-  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`tripId`) REFERENCES `trip` (`tripId`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`paymentId`) REFERENCES `payment` (`paymentId`);
+
+--
+-- Constraints for table `user_trips`
+--
+ALTER TABLE `user_trips`
+  ADD CONSTRAINT `user_trips_ibfk_2` FOREIGN KEY (`tripId`) REFERENCES `trip` (`tripId`),
+  ADD CONSTRAINT `user_trips_ibfk_3` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
