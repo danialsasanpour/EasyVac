@@ -101,9 +101,10 @@
 	width: 95%;
 	padding:10px;
 	
+	
 	box-sizing:border-box;
 	margin:50px;
-	margin-left:3%;
+	margin-left:25%;
 	
 	
 	color:white;
@@ -154,12 +155,13 @@
 			</div>
 			
 			   
-			<br>
-			<div id="aside" style="margin:auto;text-align:center;">
-			
-				<h1 style="text-align:center; color:white">Account Details</h1>
+			<br><br/><br/><br/>
+			<h1 style="text-align:center; margin-left:5%; margin-top:45px;">Account Details</h1>
+			<br/>
 				
-				<br><br>
+			<div id="aside">
+					
+				<br>
 				<a href="AccountInformation.php"><input class="buttonsearch"type="button" name="View Profile" value="View Profile" onclick=""></a>
 				<a href="UserPlans.php"><input class="buttonsearch"type="button" name="View my Plans" value="View my Plans" onclick=""></a>
 				<a href="MakeNewPlanProcess.php"><input class="buttonsearch"type="button" name="Make a new Plan" value="Make a new Plan" onclick=""></a><br/><br/><br/><br/><br/><br/>
@@ -170,7 +172,7 @@
 			</div>
 			
 			
-			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			
 			<div class="container">
 				<div class="box6">
