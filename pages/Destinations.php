@@ -113,7 +113,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
    </style>
    
  </head>
- <body style="background-image: url(../img/a.jpg);  background-repeat: no-repeat; background-size: cover">
+ <body style="background-image: url(../img/wf.jpg);  background-repeat: no-repeat; background-size: cover">
 			<br>
 			<header>
 			

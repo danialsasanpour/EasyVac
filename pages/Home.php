@@ -47,15 +47,16 @@
 	
 	text-decoration:none;
 	font-size:25px;
-	
+	color:white;
 	padding-right:30px;padding-left:25px;
 	text-shadow: 1px 1px 2px black, 0px 0 20px black, 0 0 5px darkblue; text-align:center ; 
 	
 }
-		a:link { color: white}
-		a:visited {color: white;background-color: transparent; text-decoration: none;}
+		a:link { color: #009999}
+		a:visited {color: #009999;background-color: transparent; text-decoration: none;}
 		a:hover {color: darkblue; background-color: transparent; text-decoration: underline;}
         a:active {color: blue; background-color: transparent; text-decoration: underline;}
+        
 #boxes{	
 	margin-top:20px;}
 
@@ -197,7 +198,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div id="halfright">
 					<h1 style="color:#00141a;font-size: 300%;">$349</h1>
 					<h2 style="color:#00141a;">Skydiving Montreal</h2>
-					<h2 style="color:darkblue;"><a href='./Activities.php#activityId132' title='skydiving'>more information</a></h2>
+					<h2 style="color:darkblue;"><a href='./Activities.php#activityId132' title='skydiving' style="color:darkblue">more information</a></h2>
 				</div>
 				<div class="halfleft">
 					<h1 style="color:#009999;">Our top Five</h1>
@@ -214,7 +215,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div id="halfright">
 					<h1 style="color:#00141a;font-size: 300%;">$119</h1>
 					<h2 style="color:#00141a;">Helicopter Tour Over Toronto </h2>
-					<h2 style="color:darkblue;"><a href='./Activities.php#activityId111' title='helicopter toronto'>more information</a></h2>
+					<h2 style="color:darkblue;"><a href='./Activities.php#activityId111' title='helicopter toronto' style="color:darkblue">more information</a></h2>
 				</div>
 				<div class="halfleft">
 					<h1 style="color:#009999;">Destinations</h1>
@@ -253,7 +254,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 				<div id="halfright">
 					<h1 style="color:#00141a;font-size: 300%;">$79</h1>
 					<h2 style="color:#00141a;">Canyon Icewalk  </h2>
-					<h2 style="color:darkblue;"><a href='./Activities.php#activityId154' title='icewalk'>more information</a></h2>
+					<h2 style="color:darkblue;"><a href='./Activities.php#activityId154' title='icewalk' style="color:darkblue">more information</a></h2>
 				</div>
 				
 			</div>
