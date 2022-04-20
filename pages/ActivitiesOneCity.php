@@ -314,7 +314,7 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 			?>
 			
 			<br/><br/><br/>
-			 <input style="margin-bottom:50px;margin-top:50px;" class='buttonsearch' type='button' name='View my Plans' value='Confirm and Create Plan' onclick=''>
+			 <a href="UserPlans.php"><input style="margin-bottom:50px;margin-top:50px;" class='buttonsearch' type='button' name='View my Plans' value='Confirm and Create Plan' onclick=''></a>
 			
 				<!--  
 				<div class="halfright" id="Toronto1">
