@@ -114,6 +114,25 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
 	background-color:black; color:white; border-bottom:1px solid #00001a; background-image: linear-gradient(black, black, #003d4d ,black, black,black);
 	text-align:center;padding:20px;}
 
+.buttonsearch{ 
+    margin:auto;
+    font-size: 16px; background-color: #009999; display:block;
+   text-align: center; padding: 11px 25px;
+   color: white; border-radius: 24px;
+   float:left;	text-align:center;
+   margin-right: 28px;
+   }
+   
+   
+.buttonsearch:hover {
+  background-color: white;
+  color: #009999; border-radius: 24px; transition: 0,25s;
+  float:left;	text-align:center;box-sizing:border-box;}
+  padding:50px;
+  
+}
+
+
    </style>
    
  </head>
@@ -229,13 +248,13 @@ background-color: #009999; color: white; padding: 15px 32px; text-align: center;
             				</div>
             				<div id='halfright'>
             					<img src='".$oneCity->getImage()."' style='height:230px' alt='Wallpaper'/>
-            				</div></div>"; 
+            				</div></div><br/><br/>"; 
             		
                     }
                 }
                 else
                     echo "<h1>City $cityName not found! Please press on any menu options to go back</h1><br/><br/>";
-                    echo "<a style='margin-left:15.5%' href='./Destinations.php#backToSearch' style='float:left;'><span style='font-size:18px;color:white;'>Return</span></a>";
+                    echo "<a  href='./Destinations.php#backToSearch''><button style='float:left;margin-left:10%;' class='buttonsearch'  onclick=''>Return</button></a>";
             ?>
             
 </div>
